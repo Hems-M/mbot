@@ -1,4 +1,5 @@
 ---
+breadcrumb: "MBot Omni"
 layout: single
 title: MBot Omni Hardware Documentation
 last_modified_at: 2024-08-23

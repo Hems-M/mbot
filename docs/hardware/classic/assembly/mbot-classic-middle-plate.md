@@ -5,6 +5,8 @@ last_modified_at: 2024-10-07
 author: shaw
 toc: true
 ---
+{% include path-progress.html path="classic_assembly" %}
+
 
 This guide is for Differential Drive MBot Classic middle plate assembly. At the end of this guide, you should have a fully assembled middle plate that looks like this:
 
@@ -94,6 +96,4 @@ Note that the OLED mount and the camera mount are both white and look similar, b
 
 Now, let's move on to the [top section](/docs/hardware/classic/assembly/mbot-classic-top-plate).
 
-[**Previous Step:** Bottom Plate](/docs/hardware/classic/assembly/mbot-classic-bottom-plate){: .btn .btn--inverse .align-left}
-[**Next Step:** Top Plate](/docs/hardware/classic/assembly/mbot-classic-top-plate){: .btn .btn--inverse .align-right}
-
+{% include path-nav.html path="classic_assembly" %}

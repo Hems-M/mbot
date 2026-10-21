@@ -4,6 +4,8 @@ title: Connecting to the MBot in VSCode
 toc: true
 last_modified_at: 2024-08-23
 ---
+{% include path-progress.html path="setup" %}
+
 
 We will program the robot using VSCode's Remote Development extension. This extension allows us to connect to a remote host in a VSCode window and write code on its filesystem.
 
@@ -15,7 +17,7 @@ When you have completed this guide, check out the [MBot Bridge API documentation
 
 This tutorial assumes you have installed [VSCode](https://code.visualstudio.com/). You will need a laptop connected to the same WiFi as the robot (this is MWireless on the UM campus).
 
-You will also need to turn the robot on and [get its IP address](/docs/setup/networking).
+You will also need to turn the robot on and [get its IP address](/docs/tutorials/get-ip/).
 
 ---
 
@@ -73,3 +75,4 @@ This video tutorial goes through the process outlined above.
   <iframe style="display:block" width="560" height="315" src="https://www.youtube.com/embed/65J26m_rSxE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+{% include path-nav.html path="setup" %}

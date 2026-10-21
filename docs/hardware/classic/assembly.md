@@ -1,4 +1,5 @@
 ---
+breadcrumb: "Assembly"
 layout: single
 title: MBot Classic Assembly Guide
 last_modified_at: 2024-10-07
@@ -12,10 +13,10 @@ This guide will walk you through the steps needed to assemble the MBot Classic.
     <img src="/assets/images/hardware/classic/assembly/wiring/0-mbot.jpg" alt="" style="max-width:200px;"/>
 </a>
 
-- Step 1: Assemble the bottom plate - [Link](/docs/hardware/classic/assembly/mbot-classic-bottom-plate)
-- Step 2: Assemble the middle plate - [Link](/docs/hardware/classic/assembly/mbot-classic-middle-plate)
-- Step 3: Assemble the top plate - [Link](/docs/hardware/classic/assembly/mbot-classic-top-plate)
-- Final: Connect all the parts and cables - [Wiring Guide](/docs/hardware/classic/assembly/mbot-wiring)
+Work through the four parts in order:
 
-[**Start:** Bottom Plate](/docs/hardware/classic/assembly/mbot-classic-bottom-plate){: .btn .btn--inverse .align-right}
+{% include path-list.html path="classic_assembly" %}
 
+[Start: Bottom plate <i class="fas fa-arrow-right"></i>](/docs/hardware/classic/assembly/mbot-classic-bottom-plate/){: .btn .btn--primary .btn--large}
+
+When the robot is assembled, continue to the [Setup Guide](/docs/setup/).

@@ -1,44 +1,55 @@
 ---
 title: "The MBot Ecosystem"
 layout: splash
+# Old pages that were removed now send visitors here.
+redirect_from:
+  - /about/
+  - /um-courses/
+  - /teaching/
+  - /docs/teaching/
+  - /docs/teaching/course-image/
 header:
-  overlay_color: "#000"
-  overlay_filter: "0.5"
+  overlay_color: "#00274C"
+  overlay_filter: "linear-gradient(90deg, rgba(0, 39, 76, 0.88) 0%, rgba(0, 39, 76, 0.55) 55%, rgba(0, 0, 0, 0.15) 100%)"
   overlay_image: /assets/images/mbot_family.jpg
   actions:
-    - label: "Learn More"
-      url: "/about"
-excerpt: "A low-cost, adaptable ecosystem for teaching robotics with real robots."
-intro:
-  - excerpt: 'The MBot family of educational robot platforms are designed at the University of Michigan. Since the MBot was invented in 2014, hundreds of MBots have been used to teach 8 courses across undergraduate and graduate levels.'
-feature_row:
-  - image_path: assets/images/mbot_aug23_photoshoot.jpg
-    alt: "placeholder image 1"
-    title: "Placeholder 1"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-  - image_path: /assets/images/mbot_aug23_photoshoot.jpg
-    image_caption: "Image courtesy of [Unsplash](https://unsplash.com/)"
-    alt: "placeholder image 2"
-    title: "Placeholder 2"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-    url: "#test-link"
-    btn_label: "Read More"
-    btn_class: "btn--primary"
-  - image_path: /assets/images/mbot_aug23_photoshoot.jpg
-    title: "Placeholder 3"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-feature_row2:
-  - image_path: /assets/images/teaching_omni.jpg
-    alt: "Teaching with the MBot"
-    title: "Teaching with the MBot"
-    excerpt: 'The MBot is designed to be adaptable to the needs of your students and your university. Learn more about how others are using the MBot for hands-on robotics education.'
-    url: "/docs"
-    btn_label: "Learn More"
-    btn_class: "btn--primary"
+    - label: "Start the Setup Guide"
+      url: "/docs/setup/"
+    - label: "Browse the docs"
+      url: "/docs/"
+excerpt: "Guides to build, set up and program the MBot, the University of Michigan's educational robot."
 ---
 
-{% include feature_row id="intro" type="center" %}
+<section class="home-section">
+<h2 class="home-section__title">What do you need to do?</h2>
+<div class="tile-grid">
+<a class="tile tile--featured" href="{{ '/docs/setup/' | relative_url }}"><span class="tile__icon"><i class="fas fa-list-ol" aria-hidden="true"></i></span><span class="tile__title">Set up my robot</span><span class="tile__text">Seven steps from a blank SD card to a robot that drives: OS, WiFi, IP address, VS Code, calibration and a test drive.</span><span class="tile__cta">Open the Setup Guide <i class="fas fa-arrow-right" aria-hidden="true"></i></span></a>
+<a class="tile" href="{{ '/docs/tutorials/' | relative_url }}"><span class="tile__icon"><i class="fas fa-code" aria-hidden="true"></i></span><span class="tile__title">Use and program it</span><span class="tile__text">Drive from the web app, connect with VS Code, and program with the MBot Bridge API.</span><span class="tile__cta">Tutorials <i class="fas fa-arrow-right" aria-hidden="true"></i></span></a>
+<a class="tile" href="{{ '/docs/troubleshooting/' | relative_url }}"><span class="tile__icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></span><span class="tile__title">Fix a problem</span><span class="tile__text">Robot not driving, not connecting to WiFi, or not flashing? Start with the common problems.</span><span class="tile__cta">Troubleshooting <i class="fas fa-arrow-right" aria-hidden="true"></i></span></a>
+</div>
+</section>
 
-<!-- {% include feature_row %} -->
+<section class="home-section">
+<h2 class="home-section__title">Common tasks</h2>
+<ul class="quick-links">
+<li><a href="{{ '/docs/tutorials/get-ip/' | relative_url }}"><i class="fas fa-network-wired" aria-hidden="true"></i>Find my robot's IP address</a></li>
+<li><a href="{{ '/docs/tutorials/vscode/' | relative_url }}"><i class="fas fa-terminal" aria-hidden="true"></i>Connect with VS Code</a></li>
+<li><a href="{{ '/docs/setup/networking/#connecting-to-an-enterprise-wifi-network' | relative_url }}"><i class="fas fa-wifi" aria-hidden="true"></i>Connect to MWireless</a></li>
+<li><a href="{{ '/docs/setup/firmware/' | relative_url }}"><i class="fas fa-microchip" aria-hidden="true"></i>Flash the firmware</a></li>
+<li><a href="{{ '/docs/tutorials/drive/' | relative_url }}"><i class="fas fa-gamepad" aria-hidden="true"></i>Drive the robot</a></li>
+<li><a href="{{ '/docs/basics/' | relative_url }}"><i class="fas fa-battery-three-quarters" aria-hidden="true"></i>Login, power and battery care</a></li>
+</ul>
+</section>
 
-{% include feature_row id="feature_row2" type="left" %}
+<section class="home-section">
+<h2 class="home-section__title">Which MBot do you have?</h2>
+<div class="robot-grid">
+<a class="robot-card" href="{{ '/docs/hardware/classic/' | relative_url }}"><img src="{{ '/assets/images/mbot-no-bkg.png' | relative_url }}" alt="MBot Classic" loading="lazy"><span class="robot-card__body"><span class="robot-card__title">MBot Classic</span><span class="robot-card__text">Differential drive with two wheels and a Raspberry Pi 5.</span><span class="robot-card__links">Assembly guide, parts and design files <i class="fas fa-arrow-right" aria-hidden="true"></i></span></span></a>
+<a class="robot-card" href="{{ '/docs/hardware/omni/' | relative_url }}"><img src="{{ '/assets/images/mbot-omni-no-bkg.png' | relative_url }}" alt="MBot Omni" loading="lazy"><span class="robot-card__body"><span class="robot-card__title">MBot Omni</span><span class="robot-card__text">Omni-directional drive with three omni wheels.</span><span class="robot-card__links">Assembly guide, parts and design files <i class="fas fa-arrow-right" aria-hidden="true"></i></span></span></a>
+</div>
+</section>
+
+<section class="home-section home-about">
+<p>The MBot family of educational robot platforms is designed at the University of Michigan. Since the MBot was invented in 2014, hundreds of MBots have been used to teach 8 courses across undergraduate and graduate levels.</p>
+<p><strong>Need help?</strong> Email <a href="mailto:um-mbothelp@umich.edu">um-mbothelp@umich.edu</a>. Students: check with your course staff first, since your course may use its own setup.</p>
+</section>

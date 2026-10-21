@@ -1,0 +1,10 @@
+{%- comment -%}
+  Numbered overview of every step in a path (see _data/paths.yml).
+  Usage:  {% include path-list.html path="setup" %}
+{%- endcomment -%}
+{%- assign path = site.data.paths[include.path] -%}
+<ol class="path-list">
+{%- for s in path.steps -%}
+<li class="path-list__item"><a href="{{ s.url | relative_url }}"><span class="path-list__num">{{ forloop.index }}</span><span class="path-list__body"><span class="path-list__title">{{ s.title }}</span>{% if s.summary %}<span class="path-list__text">{{ s.summary }}</span>{% endif %}</span><i class="fas fa-chevron-right path-list__go" aria-hidden="true"></i></a></li>
+{%- endfor -%}
+</ol>

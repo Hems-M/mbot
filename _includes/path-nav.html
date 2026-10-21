@@ -1,0 +1,25 @@
+{%- comment -%}
+  Previous / Next links for a step-by-step path (see _data/paths.yml).
+  Usage, at the bottom of a step page:  {% include path-nav.html path="setup" %}
+{%- endcomment -%}
+{%- assign path = site.data.paths[include.path] -%}
+{%- assign current = 0 -%}
+{%- for s in path.steps -%}{%- if s.url == page.url -%}{%- assign current = forloop.index -%}{%- endif -%}{%- endfor -%}
+{%- if current > 0 -%}
+{%- assign prev_i = current | minus: 2 -%}
+{%- assign next_i = current -%}
+<nav class="path-nav" aria-label="{{ path.title }} navigation">
+{%- if current > 1 -%}
+{%- assign prev = path.steps[prev_i] -%}
+<a class="path-nav__link path-nav__link--prev" href="{{ prev.url | relative_url }}"><span class="path-nav__dir"><i class="fas fa-arrow-left" aria-hidden="true"></i> Previous</span><span class="path-nav__title">Step {{ current | minus: 1 }}: {{ prev.title }}</span></a>
+{%- else -%}
+<a class="path-nav__link path-nav__link--prev" href="{{ path.url | relative_url }}"><span class="path-nav__dir"><i class="fas fa-arrow-left" aria-hidden="true"></i> Overview</span><span class="path-nav__title">{{ path.title }}</span></a>
+{%- endif -%}
+{%- if current < path.steps.size -%}
+{%- assign next = path.steps[next_i] -%}
+<a class="path-nav__link path-nav__link--next" href="{{ next.url | relative_url }}"><span class="path-nav__dir">Next <i class="fas fa-arrow-right" aria-hidden="true"></i></span><span class="path-nav__title">Step {{ current | plus: 1 }}: {{ next.title }}</span></a>
+{%- elsif path.finish -%}
+<a class="path-nav__link path-nav__link--next" href="{{ path.finish.url | relative_url }}"><span class="path-nav__dir">Finished <i class="fas fa-flag-checkered" aria-hidden="true"></i></span><span class="path-nav__title">{{ path.finish.title }}</span></a>
+{%- endif -%}
+</nav>
+{%- endif -%}

@@ -251,3 +251,167 @@ ul.api li > ul.params li {
 ul.api li > ul.params li > * {
   margin-left: 0;
 }
+
+/* ==========================================================================
+   Student layout additions (2026 redesign). Colors are the mbot skin's:
+   UM blue #00274C, maize #FFCB05, link blue #2F65A7, text #3d4144.
+   ========================================================================== */
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Home hero: first button filled maize ---------- */
+.page__hero--overlay .page__title { font-size: 2.6em; }
+.page__hero--overlay .page__lead { max-width: 640px; font-size: 1.25em; }
+.page__hero--overlay .btn { text-shadow: none; }
+.page__hero--overlay .btn:first-of-type {
+  background-color: #FFCB05; border-color: #FFCB05; color: #00274C;
+}
+.page__hero--overlay .btn:first-of-type:hover {
+  background-color: #ffd84d; border-color: #ffd84d; color: #00274C;
+}
+
+/* ---------- Home sections ---------- */
+.home-section { margin: 2.5em 0; }
+.page__content h2.home-section__title, h2.home-section__title {
+  font-size: 1.35em; margin: 0 0 0.9em; padding-bottom: 0.35em;
+  border-bottom: 3px solid #FFCB05; display: inline-block;
+}
+.home-about { color: #5a6066; font-size: 0.9em; border-top: 1px solid #e4e7ea; padding-top: 1.5em; }
+.home-about p { margin-bottom: 0.6em; }
+
+/* ---------- Tiles (home + docs hub) ---------- */
+.tile-grid {
+  display: grid; gap: 1em; margin: 1em 0 2em;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.tile {
+  display: flex; flex-direction: column; gap: 0.35em;
+  padding: 1.2em 1.25em; border: 1px solid #e4e7ea; border-radius: 10px;
+  background: #fff; color: #3d4144; text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.tile:hover, .tile:focus-visible {
+  border-color: #FFCB05; box-shadow: 0 6px 18px rgba(0, 39, 76, 0.10);
+  transform: translateY(-2px); color: #3d4144;
+}
+.tile__icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.4em; height: 2.4em; border-radius: 8px;
+  background: #eef3f9; color: #00274C; font-size: 1.05em; margin-bottom: 0.3em;
+}
+.tile--featured { border-color: #00274C; background: #00274C; color: #fff; }
+.tile--featured:hover, .tile--featured:focus-visible { color: #fff; border-color: #FFCB05; }
+.tile--featured .tile__icon { background: #FFCB05; color: #00274C; }
+.tile--featured .tile__text { color: #d6deea; }
+.tile--featured .tile__cta { color: #FFCB05; }
+.tile__title { font-weight: 700; font-size: 1.05em; }
+.tile__text { font-size: 0.85em; line-height: 1.5; color: #5a6066; flex: 1; }
+.tile__cta { font-size: 0.82em; font-weight: 600; color: #2F65A7; margin-top: 0.4em; }
+
+/* ---------- Quick links ---------- */
+.quick-links {
+  list-style: none; margin: 0 0 1.5em; padding: 0; display: grid; gap: 0.5em;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+/* Home page is wider: always 3 columns on desktop so 6 links make 2 even rows. */
+.home-section .quick-links { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1024px) { .home-section .quick-links { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .home-section .quick-links { grid-template-columns: 1fr; } }
+.quick-links li { margin: 0; }
+.quick-links a {
+  display: flex; align-items: center; gap: 0.7em; padding: 0.7em 0.9em;
+  border: 1px solid #e4e7ea; border-radius: 8px; font-size: 0.88em;
+  color: #00274C; text-decoration: none; background: #fafbfc;
+}
+.quick-links a:hover { border-color: #2F65A7; background: #fff; }
+.quick-links a i { color: #2F65A7; width: 1.2em; text-align: center; }
+
+/* ---------- Robot cards (home) ---------- */
+.robot-grid { display: grid; gap: 1em; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.robot-card {
+  display: flex; align-items: center; gap: 1em; padding: 1em;
+  border: 1px solid #e4e7ea; border-radius: 10px; color: #3d4144; text-decoration: none; background: #fff;
+}
+.robot-card:hover { border-color: #FFCB05; box-shadow: 0 6px 18px rgba(0, 39, 76, 0.10); color: #3d4144; }
+.robot-card img { width: 120px; height: 120px; object-fit: contain; flex: none; }
+.robot-card__body { display: flex; flex-direction: column; gap: 0.3em; }
+.robot-card__title { font-weight: 700; font-size: 1.05em; color: #00274C; }
+.robot-card__text { font-size: 0.85em; color: #5a6066; }
+.robot-card__links { font-size: 0.8em; font-weight: 600; color: #2F65A7; }
+
+/* ---------- Step-by-step paths: progress bar ---------- */
+.path-progress {
+  margin: 0 0 2em; padding: 1em 1.1em 0.9em; border: 1px solid #e4e7ea;
+  border-left: 4px solid #FFCB05; border-radius: 8px; background: #fafbfc;
+}
+.path-progress__head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 0.7em; font-size: 0.8em;
+}
+.path-progress__title { font-weight: 700; color: #00274C; text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; }
+.path-progress__count { color: #5a6066; font-weight: 600; }
+.path-progress__steps {
+  list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; counter-reset: none;
+}
+.path-progress__steps li { flex: 1; margin: 0; min-width: 0; }
+.path-progress__steps a {
+  display: flex; flex-direction: column; align-items: center; gap: 0.3em;
+  text-decoration: none; color: #7a8288; font-size: 0.68em; line-height: 1.25; text-align: center;
+  padding-top: 0.25em; border-top: 4px solid #dfe3e7;
+}
+.path-progress__num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.9em; height: 1.9em; border-radius: 50%; background: #dfe3e7; color: #5a6066;
+  font-weight: 700; font-size: 1.1em; margin-top: 0.35em;
+}
+.path-progress__steps li.is-done a { border-top-color: #2F65A7; color: #2F65A7; }
+.path-progress__steps li.is-done .path-progress__num { background: #2F65A7; color: #fff; }
+.path-progress__steps li.is-current a { border-top-color: #FFCB05; color: #00274C; font-weight: 700; }
+.path-progress__steps li.is-current .path-progress__num { background: #FFCB05; color: #00274C; }
+.path-progress__steps a:hover { color: #00274C; }
+.path-progress__goal {
+  margin-top: 0.9em; padding-top: 0.75em; border-top: 1px solid #e4e7ea; font-size: 0.8em;
+}
+.path-progress__goal p { margin: 0 0 0.25em; }
+@media (max-width: 600px) {
+  .path-progress__label { display: none; }
+  .path-progress__steps li.is-current .path-progress__label { display: block; }
+}
+
+/* ---------- Step-by-step paths: previous / next ---------- */
+.path-nav { display: flex; gap: 1em; margin: 3em 0 1em; clear: both; }
+.path-nav__link {
+  flex: 1; display: flex; flex-direction: column; gap: 0.25em; padding: 0.9em 1.1em;
+  border: 1px solid #e4e7ea; border-radius: 8px; text-decoration: none; color: #00274C; background: #fff;
+}
+.path-nav__link:hover { border-color: #FFCB05; box-shadow: 0 4px 12px rgba(0, 39, 76, 0.08); color: #00274C; }
+.path-nav__link--next { text-align: right; margin-left: auto; }
+.path-nav__link--next { border-color: #00274C; }
+.path-nav__dir { font-size: 0.72em; font-weight: 700; color: #5a6066; text-transform: uppercase; letter-spacing: 0.05em; }
+.path-nav__title { font-weight: 700; font-size: 0.95em; }
+@media (max-width: 600px) { .path-nav { flex-direction: column; } .path-nav__link--next { text-align: left; } }
+
+/* ---------- Step-by-step paths: overview list ---------- */
+.path-list { list-style: none; margin: 1em 0 1.5em; padding: 0; }
+.path-list__item { margin: 0 0 0.55em; }
+.path-list__item a {
+  display: flex; align-items: center; gap: 1em; padding: 0.85em 1em;
+  border: 1px solid #e4e7ea; border-radius: 8px; text-decoration: none; color: #3d4144; background: #fff;
+}
+.path-list__item a:hover { border-color: #FFCB05; box-shadow: 0 4px 12px rgba(0, 39, 76, 0.08); }
+.path-list__num {
+  flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: 2.1em; height: 2.1em; border-radius: 50%; background: #00274C; color: #FFCB05; font-weight: 700;
+}
+.path-list__body { display: flex; flex-direction: column; flex: 1; }
+.path-list__title { font-weight: 700; color: #00274C; }
+.path-list__text { font-size: 0.85em; color: #5a6066; }
+.path-list__go { color: #7a8288; }
+
+/* ---------- Footer ---------- */
+/* The theme always prints a "Follow:" label; this site has no social links. */
+.page__footer-follow { display: none; }
+.page__footer-help { font-size: 0.75em; margin: 0 0 0.5em; }

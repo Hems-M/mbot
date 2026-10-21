@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "MBot Setup: Installing the OS"
+title: "Install the OS"
 toc: true
 
 # Public image links
@@ -11,6 +11,8 @@ mbot_full_omni_rpi_os_link: https://www.dropbox.com/scl/fi/hq1yp1lm7g8i6rrb9dgzz
 
 last_modified_at: 2026-01-15
 ---
+{% include path-progress.html path="setup" %}
+
 
 To configure a new robot, you must first flash a new SD card with the robot's image.
 
@@ -64,5 +66,4 @@ To install the OS image on the SD card, follow these instructions:
 **Flash failed?** If the flash is not successful, trying a second time might fix it. If it continues to fail, you can try another SD card.
 {: .notice--warning}
 
-
-[**Next Step:** Configure your image](/docs/setup/02-configuration){: .btn .btn--inverse .align-right}
+{% include path-nav.html path="setup" %}

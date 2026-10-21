@@ -5,6 +5,8 @@ last_modified_at: 2024-11-21
 author: shaw
 toc: true
 ---
+{% include path-progress.html path="classic_assembly" %}
+
 
 This guide is for Differential Drive MBot Classic top plate assembly. At the end of this guide, you should have a fully assembled top plate that looks like this:
 
@@ -101,8 +103,4 @@ After assembling the wires, do not plug them in yet.
 
 Now, let's move on to the [wiring section](/docs/hardware/classic/assembly/mbot-wiring).
 
-[**Previous Step:** Middle Plate](/docs/hardware/classic/assembly/mbot-classic-middle-plate){: .btn .btn--inverse .align-left}
-[**Next Step:** Wiring](/docs/hardware/classic/assembly/mbot-wiring){: .btn .btn--inverse .align-right}
-
-
-
+{% include path-nav.html path="classic_assembly" %}

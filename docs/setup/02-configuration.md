@@ -1,9 +1,11 @@
 ---
 layout: single
-title: "MBot Setup: Configuring your Image"
+title: "Configure the Robot"
 toc: true
 last_modified_at: 2024-11-22
 ---
+{% include path-progress.html path="setup" %}
+
 
 **Note:** Configuring your image only works for the official MBot images. If you are using a different image (like a standard Raspberry Pi image), you will need to [setup your image](/docs/setup/new-image) before configuration.
 {: .notice--info}
@@ -75,7 +77,6 @@ The following information can be configured in the `mbot_config.txt` file:
 
 If you are on an Enterprise network (e.g. you are on the UM campus), you will need to connect your robot to the network manually.
 
-See the [Networking Guide](/docs/setup/networking) for instructions on how to do this, then go to the calibration step.
+The next step, [Connect to WiFi](/docs/setup/networking), shows how to do this.
 
-[**Previous Step:** Installing the OS](/docs/setup/01-install-os){: .btn .btn--inverse .align-left}
-[**Next Step:** Calibration & Flashing](/docs/setup/03-calibration){: .btn .btn--inverse .align-right}
+{% include path-nav.html path="setup" %}

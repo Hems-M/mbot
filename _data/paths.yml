@@ -1,0 +1,59 @@
+# Step-by-step paths through the docs.
+# Each step page shows a progress bar at the top and Previous / Next links at
+# the bottom, generated from this file:
+#   {% include path-progress.html path="setup" %}
+#   {% include path-nav.html path="setup" %}
+# To add, remove or reorder a step, edit the list below. Use the page's URL
+# with a trailing slash, exactly as it appears in the browser.
+
+setup:
+  title: "Setup Guide"
+  url: /docs/setup/
+  finish:
+    title: "Start programming: Tutorials"
+    url: /docs/tutorials/
+  steps:
+    - title: "Install the OS"
+      url: /docs/setup/01-install-os/
+      summary: "Flash the MBot image onto a micro SD card."
+      done: "Etcher reports that the flash is complete."
+    - title: "Configure the robot"
+      url: /docs/setup/02-configuration/
+      summary: "Set the robot's name and WiFi in mbot_config.txt on the SD card."
+      done: "The file is saved, and the SD card is ejected and back in the robot."
+    - title: "Connect to WiFi"
+      url: /docs/setup/networking/
+      summary: "Put the robot on the same network as your laptop."
+      done: "The robot is on your WiFi network (on campus, MWireless)."
+    - title: "Find the IP address"
+      url: /docs/tutorials/get-ip/
+      summary: "Read the robot's IP address from its display, the IP registry, or the SD card."
+      done: "You have the robot's IP address written down."
+    - title: "Connect from your laptop"
+      url: /docs/tutorials/vscode/
+      summary: "Open a terminal on the robot using VS Code Remote SSH."
+      done: "A VS Code terminal is open on the robot."
+    - title: "Calibrate and flash"
+      url: /docs/setup/03-calibration/
+      summary: "Run the calibration program, then flash the MBot firmware."
+      done: "Calibration has finished and the firmware is flashed."
+    - title: "Test drive"
+      url: /docs/tutorials/drive/
+      summary: "Drive the robot from the web app to check that everything works."
+      done: "The robot drives forward, backward and turns from the web app."
+
+classic_assembly:
+  title: "MBot Classic Assembly"
+  url: /docs/hardware/classic/assembly/
+  finish:
+    title: "Next: Setup Guide"
+    url: /docs/setup/
+  steps:
+    - title: "Bottom plate"
+      url: /docs/hardware/classic/assembly/mbot-classic-bottom-plate/
+    - title: "Middle plate"
+      url: /docs/hardware/classic/assembly/mbot-classic-middle-plate/
+    - title: "Top plate"
+      url: /docs/hardware/classic/assembly/mbot-classic-top-plate/
+    - title: "Wiring"
+      url: /docs/hardware/classic/assembly/mbot-wiring/

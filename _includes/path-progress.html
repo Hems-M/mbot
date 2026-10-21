@@ -1,0 +1,23 @@
+{%- comment -%}
+  Progress bar for a step-by-step path (see _data/paths.yml).
+  Usage, at the top of a step page:  {% include path-progress.html path="setup" %}
+  Renders nothing if the current page is not a step of that path.
+{%- endcomment -%}
+{%- assign path = site.data.paths[include.path] -%}
+{%- assign current = 0 -%}
+{%- for s in path.steps -%}{%- if s.url == page.url -%}{%- assign current = forloop.index -%}{%- endif -%}{%- endfor -%}
+{%- if current > 0 -%}
+{%- assign idx = current | minus: 1 -%}
+{%- assign step = path.steps[idx] -%}
+<nav class="path-progress" aria-label="{{ path.title }} progress">
+<div class="path-progress__head"><a class="path-progress__title" href="{{ path.url | relative_url }}">{{ path.title }}</a><span class="path-progress__count">Step {{ current }} of {{ path.steps.size }}</span></div>
+<ol class="path-progress__steps">
+{%- for s in path.steps -%}
+<li class="{% if forloop.index < current %}is-done{% elsif forloop.index == current %}is-current{% endif %}"><a href="{{ s.url | relative_url }}"{% if forloop.index == current %} aria-current="step"{% endif %} title="Step {{ forloop.index }}: {{ s.title }}"><span class="path-progress__num">{% if forloop.index < current %}<i class="fas fa-check" aria-hidden="true"></i><span class="sr-only">{{ forloop.index }}</span>{% else %}{{ forloop.index }}{% endif %}</span><span class="path-progress__label">{{ s.title }}</span></a></li>
+{%- endfor -%}
+</ol>
+{%- if step.summary -%}
+<div class="path-progress__goal"><p><strong>In this step:</strong> {{ step.summary }}</p>{% if step.done %}<p><strong>You're done when:</strong> {{ step.done }}</p>{% endif %}</div>
+{%- endif -%}
+</nav>
+{%- endif -%}

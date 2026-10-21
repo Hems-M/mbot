@@ -5,6 +5,8 @@ last_modified_at: 2024-11-19
 author: shaw
 toc: true
 ---
+{% include path-progress.html path="classic_assembly" %}
+
 
 This guide is for Differential Drive MBot Classic final wiring assembly. At the end of this guide, you should have a fully assembled mbot that looks like this:
 <a class="image-link" href="/assets/images/hardware/classic/assembly/wiring/0-mbot.jpg">
@@ -63,6 +65,4 @@ The final result should look like this:
 
 Now you have a complete version of MBot. You are ready to set up the software and make the robot move!
 
-[**Previous Step:** Top Plate](/docs/hardware/classic/assembly/mbot-classic-top-plate){: .btn .btn--inverse .align-left}
-[**Next Step:** Software Setup](/docs/setup/){: .btn .btn--inverse .align-right}
-
+{% include path-nav.html path="classic_assembly" %}

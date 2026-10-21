@@ -5,6 +5,8 @@ last_modified_at: 2024-11-21
 author: shaw
 toc: true
 ---
+{% include path-progress.html path="classic_assembly" %}
+
 {: .important}
 This guide is for Differential Drive MBot Classic bottom plate assembly. At the end of this guide, you should have a fully assembled bottom plate that looks like this:
 
@@ -162,6 +164,4 @@ Identify the GND pin on the Robotics Control Board and connect the wires to it a
 
 Now you can move to the middle plate assembly guide!
 
-[**Next Step:** Middle Plate](/docs/hardware/classic/assembly/mbot-classic-middle-plate){: .btn .btn--inverse .align-right}
-
-
+{% include path-nav.html path="classic_assembly" %}

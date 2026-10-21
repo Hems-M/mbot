@@ -1,20 +1,17 @@
-# Top menu (masthead). Ordered by what most visitors need first.
+# Top menu (masthead).
 main:
-  - title: "Getting Started"
-    url: /docs/getting-started/
-  - title: "Documentation"
-    url: /docs/
+  - title: "Setup Guide"
+    url: /docs/setup/
+  - title: "Tutorials"
+    url: /docs/tutorials/
+  - title: "Hardware"
+    url: /docs/hardware/
   - title: "Troubleshooting"
     url: /docs/troubleshooting/
-  - title: "UM Courses"
-    url: /um-courses
-  - title: "About"
-    url: /about
-  # - title: "Teaching"
-  #   url: /teaching
+  - title: "All Docs"
+    url: /docs/
 
-# Sidebar on every /docs page. Sections follow the order a new user works
-# through: start, build, set up, program, fix problems.
+# Sidebar on every /docs page, in the order a student works through it.
 docs:
   - title: "Start Here"
     url: /docs/
@@ -24,73 +21,40 @@ docs:
       - title: "MBot Basics"
         url: /docs/basics/
 
-  - title: "Hardware"
-    url: /docs/hardware/
-    children:
-      - title: "MBot Classic"
-        url: /docs/hardware/classic/
-        children:
-          - title: "Assembly"
-            url: "/docs/hardware/classic/assembly/"
-            children:
-              - title: "Bottom Plate"
-                url: "/docs/hardware/classic/assembly/mbot-classic-bottom-plate/"
-              - title: "Middle Plate"
-                url: "/docs/hardware/classic/assembly/mbot-classic-middle-plate/"
-              - title: "Top Plate"
-                url: "/docs/hardware/classic/assembly/mbot-classic-top-plate/"
-              - title: "Wiring"
-                url: "/docs/hardware/classic/assembly/mbot-wiring/"
-          - title: "Building"
-            url: "/docs/hardware/classic/building/"
-      - title: "MBot Omni"
-        url: /docs/hardware/omni/
-        children:
-          - title: "Assembly"
-            url: "/docs/hardware/omni/assembly/"
-          - title: "Motor Cables"
-            url: "/docs/hardware/omni/omni-motor-cables/"
-          - title: "Building"
-            url: "/docs/hardware/omni/building/"
-      - title: "MBot Control Board"
-        url: /docs/hardware/mbot-control-board/
-
-  - title: "Setup"
+  # The numbered steps come from _data/paths.yml (setup). Keep them in sync.
+  - title: "Setup Guide"
     url: /docs/setup/
     children:
-      - title: "Setting up a new MBot"
+      - title: "Overview"
         url: /docs/setup/
-        children:
-          - title: "Step 1: Installing the OS"
-            url: /docs/setup/01-install-os/
-          - title: "Step 2: Configuring"
-            url: /docs/setup/02-configuration/
-          - title: "Step 3: Calibration & Flashing"
-            url: /docs/setup/03-calibration/
-      - title: "Flashing Firmware"
-        url: /docs/setup/firmware/
-      - title: "Networking"
+      - title: "1. Install the OS"
+        url: /docs/setup/01-install-os/
+      - title: "2. Configure the robot"
+        url: /docs/setup/02-configuration/
+      - title: "3. Connect to WiFi"
         url: /docs/setup/networking/
-      - title: "Advanced: OS Image Setup"
-        url: /docs/setup/new-image/
+      - title: "4. Find the IP address"
+        url: /docs/tutorials/get-ip/
+      - title: "5. Connect from your laptop"
+        url: /docs/tutorials/vscode/
+      - title: "6. Calibrate and flash"
+        url: /docs/setup/03-calibration/
+      - title: "7. Test drive"
+        url: /docs/tutorials/drive/
 
-  - title: "Tutorials"
+  - title: "Use & Program"
     url: /docs/tutorials/
     children:
-      - title: "What's my MBot's IP?"
-        url: /docs/tutorials/get-ip/
-      - title: "Drive the MBot"
-        url: /docs/tutorials/drive/
-      - title: "Connecting with VSCode"
-        url: /docs/tutorials/vscode/
-      - title: "Connecting with NoMachine"
-        url: /docs/tutorials/no-machine/
       - title: "The MBot Bridge API"
         url: /docs/tutorials/bridge/
       - title: "Mapping & Localization"
         url: /docs/tutorials/mapping/
       - title: "MBot Command Line Tool"
         url: /docs/tutorials/mbot-cli-tool/
+      - title: "Connecting with NoMachine"
+        url: /docs/tutorials/no-machine/
+      - title: "Flashing Firmware"
+        url: /docs/setup/firmware/
       # MicroPython is a placeholder page; add it here when the tutorial exists.
       # - title: "MicroPython"
       #   url: /docs/tutorials/micropython/
@@ -106,6 +70,43 @@ docs:
         url: /docs/troubleshooting/software/
       - title: "Networking Problems"
         url: /docs/troubleshooting/networking/
+
+  - title: "Build Your MBot"
+    url: /docs/hardware/
+    children:
+      - title: "MBot Classic"
+        url: /docs/hardware/classic/
+        children:
+          - title: "Assembly"
+            url: "/docs/hardware/classic/assembly/"
+            children:
+              - title: "1. Bottom Plate"
+                url: "/docs/hardware/classic/assembly/mbot-classic-bottom-plate/"
+              - title: "2. Middle Plate"
+                url: "/docs/hardware/classic/assembly/mbot-classic-middle-plate/"
+              - title: "3. Top Plate"
+                url: "/docs/hardware/classic/assembly/mbot-classic-top-plate/"
+              - title: "4. Wiring"
+                url: "/docs/hardware/classic/assembly/mbot-wiring/"
+          - title: "Building"
+            url: "/docs/hardware/classic/building/"
+      - title: "MBot Omni"
+        url: /docs/hardware/omni/
+        children:
+          - title: "Assembly"
+            url: "/docs/hardware/omni/assembly/"
+          - title: "Motor Cables"
+            url: "/docs/hardware/omni/omni-motor-cables/"
+          - title: "Building"
+            url: "/docs/hardware/omni/building/"
+      - title: "MBot Control Board"
+        url: /docs/hardware/mbot-control-board/
+
+  - title: "Advanced"
+    url: /docs/setup/new-image/
+    children:
+      - title: "OS Image Setup"
+        url: /docs/setup/new-image/
 
   # Placeholder sections, not shown until they have content:
   # - title: Concepts

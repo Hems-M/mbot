@@ -1,12 +1,14 @@
-# Builds the site on every push to main and publishes a ready-to-run copy
-# (mbot-site.zip) on this repository's Releases page, under "site-latest".
+# Builds the site on every push to main (and to redesign/* branches) and
+# publishes a ready-to-run copy (mbot-site.zip) on the Releases page:
+#   main              -> release "site-latest"
+#   redesign/<name>   -> release "site-redesign-<name>"
 # Nothing is deployed to GitHub Pages. To view the site, download the zip,
 # unzip it and run serve.sh (Mac/Linux) or serve.bat (Windows).
 name: Build site and publish download
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "redesign/**"]
   # Lets you run it by hand from the Actions tab.
   workflow_dispatch:
 
@@ -16,7 +18,7 @@ permissions:
 
 # A newer push replaces a build that is still running.
 concurrency:
-  group: "site-download"
+  group: "site-download-${{ github.ref_name }}"
   cancel-in-progress: true
 
 jobs:
@@ -36,7 +38,7 @@ jobs:
       - name: Build with Jekyll
         # Outputs to ./_site. baseurl stays "" so every /docs/... link works
         # when the folder is served from http://localhost:4000/.
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --config _config.yml,_config.offline.yml
         env:
           JEKYLL_ENV: production
 
@@ -58,8 +60,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release delete site-latest --yes --cleanup-tag || true
-          gh release create site-latest dist/mbot-site.zip \
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            TAG="site-latest"; TITLE="MBot site (offline copy)"
+          else
+            TAG="site-$(echo "$GITHUB_REF_NAME" | tr '/' '-')"; TITLE="MBot site, $GITHUB_REF_NAME branch (offline copy)"
+          fi
+          gh release delete "$TAG" --yes --cleanup-tag || true
+          gh release create "$TAG" dist/mbot-site.zip \
             --target "$GITHUB_SHA" \
-            --title "MBot site (offline copy)" \
+            --title "$TITLE" \
             --notes "Built from commit ${GITHUB_SHA::7}. Download mbot-site.zip, unzip it, then run serve.sh (Mac/Linux) or serve.bat (Windows). See HOW-TO-VIEW.txt inside the zip."

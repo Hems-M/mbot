@@ -1,4 +1,5 @@
 ---
+breadcrumb: "Troubleshooting"
 layout: single
 title: MBot Troubleshooting Guide
 toc: true

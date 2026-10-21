@@ -1,21 +1,34 @@
 ---
 layout: single
-title: MBot Setup and Configuration
-last_modified_at: 2024-09-05
+title: Setup Guide
+excerpt: "Seven steps from a blank SD card to a robot you can drive and program."
+last_modified_at: 2026-10-21
 ---
 
-Got a fully assembled MBot? You're in the right place! Follow the guides below to help you get your robot ready to program.
+Follow these steps in order the first time you set up an MBot. Each step ends with a check, so you know it worked before moving on.
 
-**Students:** If you are a student in a class using the MBot, check with course staff before following these guides! Your instructors may have specific configurations you need to get your robot ready for the semester.
+**Students:** Check with course staff before you start. Your course may give you a robot that is already set up, or a different image, robot name or WiFi network to use.
 {: .notice--warning}
 
-**Need to build a robot?** Your robot should be fully assembled before you set it up. See the [Hardware Documentation](/docs/hardware) for instructions on building your robot.
+**Need to build the robot first?** The robot should be fully assembled before you set it up. See [Build your MBot](/docs/hardware/).
 {: .notice--info}
 
-The guides in this section will help you:
-1. [Install an image onto the MBot's Raspberry Pi](/docs/setup/01-install-os/),
-2. [Configure your MBot](/docs/setup/02-configuration/),
-3. [Calibrate and flash the firmware onto the MBot Control Board](/docs/setup/03-calibration/).
+## The steps
 
-[**Next Step:** Install the OS](/docs/setup/01-install-os){: .btn .btn--inverse .align-right}
+{% include path-list.html path="setup" %}
 
+[Start with Step 1: Install the OS <i class="fas fa-arrow-right"></i>](/docs/setup/01-install-os/){: .btn .btn--primary .btn--large}
+
+## What you need
+
+* The assembled MBot, with a charged battery.
+* A micro SD card for the Raspberry Pi, and a way to plug it into your laptop (a built-in slot or a USB adapter).
+* A laptop on the same WiFi network the robot will use. On the U-M campus, this is MWireless.
+* [VS Code](https://code.visualstudio.com/) installed on the laptop.
+* Your robot's name and WiFi details from course staff, if you are in a course.
+
+## Already set up?
+
+* Find the robot on the network: [What's my MBot's IP?](/docs/tutorials/get-ip/)
+* Reflash the firmware: [Flashing Firmware](/docs/setup/firmware/)
+* Something is not working: [Troubleshooting](/docs/troubleshooting/)

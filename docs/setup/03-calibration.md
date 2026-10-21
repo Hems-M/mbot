@@ -1,12 +1,14 @@
 ---
 layout: single
-title: "MBot Setup: Calibrating & Flashing"
+title: "Calibrate and Flash"
 toc: true
 
 # Versions for the firmware.
 mbot_firmware_version: v1.2.0
 last_modified_at: 2024-11-21
 ---
+{% include path-progress.html path="setup" %}
+
 
 Each robot needs to be individually calibrated in order to control it. Once it's calibrated, the firmware can be flashed onto the robot. You will need to flash programs onto the Pico to calibrate and load the firmware onto your robot.
 
@@ -159,11 +161,11 @@ To flash the MBot Control Board with the firmware, do:
 **Something not right?** If your robot doesn't drive properly, you may have a hardware issue. See the [debugging tips](/docs/troubleshooting) to check for hardware issues.
 {: .notice--info}
 
-[**Previous Step:** Configure your image](/docs/setup/02-configuration){: .btn .btn--inverse .align-left}
-[**Next Step:** Test your setup!](/docs/tutorials/drive){: .btn .btn--inverse .align-right}
 
 <script>
     // The external script needs the firmware version to be available.
     const mbotFirmwareVersion = "{{ page.mbot_firmware_version }}";
 </script>
 <script src="{{ '/assets/js/firmware_selector.js' | relative_url }}"></script>
+
+{% include path-nav.html path="setup" %}

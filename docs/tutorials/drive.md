@@ -4,6 +4,8 @@ title: Driving the MBot
 toc: true
 last_modified_at: 2024-08-21
 ---
+{% include path-progress.html path="setup" %}
+
 
 The **MBot** is a robot platform built for education. A fully setup robot should be drivable through the MBot Web App. This guide will show you how to drive around your MBot!
 
@@ -40,3 +42,4 @@ We will connect to the robot's web app and drive it around to make sure it's wor
 **MBot not driving?** Check out the [Troubleshooting Guide](/docs/troubleshooting) for help.
 {: .notice--info}
 
+{% include path-nav.html path="setup" %}
