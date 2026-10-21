@@ -1,7 +1,9 @@
 # Builds the site on every push to main (and to redesign/* branches) and
-# publishes a ready-to-run copy (mbot-site.zip) on the Releases page:
-#   main              -> release "site-latest"
-#   redesign/<name>   -> release "site-redesign-<name>"
+# publishes a ready-to-run copy on the Releases page:
+#   main              -> release "site-latest",                mbot-site-main.zip
+#   redesign/<name>   -> release "site-redesign-<name>",       mbot-site-redesign-<name>.zip
+# Each zip unzips to a folder with the same name and has VERSION.txt inside,
+# so copies of different branches never get mixed up.
 # Nothing is deployed to GitHub Pages. To view the site, download the zip,
 # unzip it and run serve.sh (Mac/Linux) or serve.bat (Windows).
 name: Build site and publish download
@@ -44,17 +46,21 @@ jobs:
 
       - name: Package the site
         run: |
-          mkdir -p dist/mbot-site
-          cp -R _site/. dist/mbot-site/
-          cp local/serve.sh local/serve.bat local/HOW-TO-VIEW.txt dist/mbot-site/
-          chmod +x dist/mbot-site/serve.sh
-          cd dist && zip -qr mbot-site.zip mbot-site
+          SLUG="$(echo "$GITHUB_REF_NAME" | tr '/' '-')"
+          NAME="mbot-site-$SLUG"
+          echo "NAME=$NAME" >> "$GITHUB_ENV"
+          mkdir -p "dist/$NAME"
+          cp -R _site/. "dist/$NAME/"
+          cp local/serve.py local/serve.sh local/serve.bat local/HOW-TO-VIEW.txt "dist/$NAME/"
+          chmod +x "dist/$NAME/serve.sh"
+          printf 'Branch: %s\nCommit: %s\nBuilt:  %s\n' "$GITHUB_REF_NAME" "${GITHUB_SHA::7}" "$(date -u '+%Y-%m-%d %H:%M UTC')" > "dist/$NAME/VERSION.txt"
+          cd dist && zip -qr "$NAME.zip" "$NAME"
 
       - name: Keep the zip as a build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: mbot-site
-          path: dist/mbot-site.zip
+          name: ${{ env.NAME }}
+          path: dist/${{ env.NAME }}.zip
 
       - name: Publish the zip on the Releases page
         env:
@@ -66,7 +72,7 @@ jobs:
             TAG="site-$(echo "$GITHUB_REF_NAME" | tr '/' '-')"; TITLE="MBot site, $GITHUB_REF_NAME branch (offline copy)"
           fi
           gh release delete "$TAG" --yes --cleanup-tag || true
-          gh release create "$TAG" dist/mbot-site.zip \
+          gh release create "$TAG" "dist/$NAME.zip" \
             --target "$GITHUB_SHA" \
             --title "$TITLE" \
-            --notes "Built from commit ${GITHUB_SHA::7}. Download mbot-site.zip, unzip it, then run serve.sh (Mac/Linux) or serve.bat (Windows). See HOW-TO-VIEW.txt inside the zip."
+            --notes "Built from commit ${GITHUB_SHA::7}. Download the zip, unzip it, then run serve.sh (Mac/Linux) or serve.bat (Windows). VERSION.txt inside says which branch it is."
