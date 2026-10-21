@@ -1,4 +1,5 @@
 ---
+breadcrumb: "MBot Classic"
 layout: single
 title: MBot Classic Hardware Documentation
 last_modified_at: 2024-08-23

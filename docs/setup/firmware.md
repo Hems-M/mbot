@@ -13,8 +13,8 @@ The main MBot firmware for the supported hardware, as well as calibration and te
 
 To flash the firmware onto the MBot Control Board, either download the firmware file to the Raspberry Pi, or compile it from the source code. The firmware file will have a .uf2 extension.
 
+<a id="1-manual-boot-mode"></a>
 ### 1. Put the Pico in BOOTSEL Mode
-{: #1-manual-boot-mode}
 
 For the `mbot-upload-firmware` script to flash new firmware, the Pico must be in `BOOTSEL` mode. Do this **every time** before you flash:
 1. Locate the "BOOTSEL" and "RST" buttons on the board (short for "Boot Select" and "Reset").

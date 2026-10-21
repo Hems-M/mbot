@@ -61,26 +61,8 @@ analytics:
     anonymize_ip         : # true, false (default)
 
 # Site Footer
-footer:
-  links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url:
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url:
+# (The social links were all blank, which showed an empty "Follow:" label.)
+
 
 
 # Reading Files
@@ -114,6 +96,7 @@ exclude:
   - tmp
   - /test # ignore Minimal Mistakes /test
   - scripts/
+  - local/  # serve scripts for the offline zip; copied into the zip by the workflow
 keep_files:
   - .git
   - .svn
@@ -158,6 +141,7 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 # mimic GitHub Pages with --safe
 whitelist:
+  - jekyll-redirect-from
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -204,3 +188,4 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
   - jekyll-sitemap
+  - jekyll-redirect-from  # removed pages (About, courses) redirect to the home page

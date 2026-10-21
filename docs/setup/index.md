@@ -1,4 +1,5 @@
 ---
+breadcrumb: "Setup"
 layout: single
 title: MBot Setup and Configuration
 last_modified_at: 2024-09-05

@@ -1,4 +1,5 @@
 ---
+breadcrumb: "Assembly"
 layout: single
 title: MBot Classic Assembly Guide
 last_modified_at: 2024-10-07

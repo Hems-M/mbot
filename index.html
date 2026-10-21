@@ -1,44 +1,59 @@
 ---
 title: "The MBot Ecosystem"
 layout: splash
+# Pages that were removed now send visitors here.
+redirect_from:
+  - /about/
+  - /um-courses/
+  - /teaching/
+  - /docs/teaching/
+  - /docs/teaching/course-image/
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: /assets/images/mbot_family.jpg
   actions:
-    - label: "Learn More"
-      url: "/about"
+    - label: "Get Started"
+      url: "/docs/getting-started/"
+    - label: "Documentation"
+      url: "/docs/"
 excerpt: "A low-cost, adaptable ecosystem for teaching robotics with real robots."
 intro:
   - excerpt: 'The MBot family of educational robot platforms are designed at the University of Michigan. Since the MBot was invented in 2014, hundreds of MBots have been used to teach 8 courses across undergraduate and graduate levels.'
 feature_row:
-  - image_path: assets/images/mbot_aug23_photoshoot.jpg
-    alt: "placeholder image 1"
-    title: "Placeholder 1"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-  - image_path: /assets/images/mbot_aug23_photoshoot.jpg
-    image_caption: "Image courtesy of [Unsplash](https://unsplash.com/)"
-    alt: "placeholder image 2"
-    title: "Placeholder 2"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-    url: "#test-link"
-    btn_label: "Read More"
+  - image_path: /assets/images/home/setup.jpg
+    alt: "An assembled MBot Omni"
+    title: "Set up your MBot"
+    excerpt: "Install the OS, connect to WiFi, then calibrate and flash the firmware."
+    url: "/docs/setup/"
+    btn_label: "Setup guides"
     btn_class: "btn--primary"
-  - image_path: /assets/images/mbot_aug23_photoshoot.jpg
-    title: "Placeholder 3"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+  - image_path: /assets/images/home/program.jpg
+    alt: "Programming an MBot from a laptop"
+    title: "Program your MBot"
+    excerpt: "Drive it from the web app, connect with VSCode, and use the MBot Bridge API."
+    url: "/docs/tutorials/"
+    btn_label: "Tutorials"
+    btn_class: "btn--primary"
+  - image_path: /assets/images/home/troubleshoot.jpg
+    alt: "The MBot Control Board"
+    title: "Fix a problem"
+    excerpt: "Robot not driving, not connecting, or not flashing? Start with the common problems."
+    url: "/docs/troubleshooting/"
+    btn_label: "Troubleshooting"
+    btn_class: "btn--primary"
 feature_row2:
-  - image_path: /assets/images/teaching_omni.jpg
-    alt: "Teaching with the MBot"
-    title: "Teaching with the MBot"
-    excerpt: 'The MBot is designed to be adaptable to the needs of your students and your university. Learn more about how others are using the MBot for hands-on robotics education.'
-    url: "/docs"
-    btn_label: "Learn More"
+  - image_path: /assets/images/welcome_bots.png
+    alt: "Two MBots"
+    title: "New to the MBot?"
+    excerpt: 'Answer a few questions and get the guides you need, in order: build, set up, then drive. **Students:** check with your course staff first, since your course may use its own setup.'
+    url: "/docs/getting-started/"
+    btn_label: "Get Started"
     btn_class: "btn--primary"
 ---
 
 {% include feature_row id="intro" type="center" %}
 
-<!-- {% include feature_row %} -->
+{% include feature_row %}
 
 {% include feature_row id="feature_row2" type="left" %}

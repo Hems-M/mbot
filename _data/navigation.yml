@@ -1,20 +1,18 @@
-# Top menu (masthead). Ordered by what most visitors need first.
+# Top menu (masthead).
 main:
   - title: "Getting Started"
     url: /docs/getting-started/
-  - title: "Documentation"
-    url: /docs/
+  - title: "Setup"
+    url: /docs/setup/
+  - title: "Tutorials"
+    url: /docs/tutorials/
+  - title: "Hardware"
+    url: /docs/hardware/
   - title: "Troubleshooting"
     url: /docs/troubleshooting/
-  - title: "UM Courses"
-    url: /um-courses
-  - title: "About"
-    url: /about
-  # - title: "Teaching"
-  #   url: /teaching
 
-# Sidebar on every /docs page. Sections follow the order a new user works
-# through: start, build, set up, program, fix problems.
+# Sidebar on every /docs page. Student sections first: start, set up,
+# program, fix problems; then hardware (building a robot).
 docs:
   - title: "Start Here"
     url: /docs/
@@ -23,37 +21,6 @@ docs:
         url: /docs/getting-started/
       - title: "MBot Basics"
         url: /docs/basics/
-
-  - title: "Hardware"
-    url: /docs/hardware/
-    children:
-      - title: "MBot Classic"
-        url: /docs/hardware/classic/
-        children:
-          - title: "Assembly"
-            url: "/docs/hardware/classic/assembly/"
-            children:
-              - title: "Bottom Plate"
-                url: "/docs/hardware/classic/assembly/mbot-classic-bottom-plate/"
-              - title: "Middle Plate"
-                url: "/docs/hardware/classic/assembly/mbot-classic-middle-plate/"
-              - title: "Top Plate"
-                url: "/docs/hardware/classic/assembly/mbot-classic-top-plate/"
-              - title: "Wiring"
-                url: "/docs/hardware/classic/assembly/mbot-wiring/"
-          - title: "Building"
-            url: "/docs/hardware/classic/building/"
-      - title: "MBot Omni"
-        url: /docs/hardware/omni/
-        children:
-          - title: "Assembly"
-            url: "/docs/hardware/omni/assembly/"
-          - title: "Motor Cables"
-            url: "/docs/hardware/omni/omni-motor-cables/"
-          - title: "Building"
-            url: "/docs/hardware/omni/building/"
-      - title: "MBot Control Board"
-        url: /docs/hardware/mbot-control-board/
 
   - title: "Setup"
     url: /docs/setup/
@@ -106,6 +73,37 @@ docs:
         url: /docs/troubleshooting/software/
       - title: "Networking Problems"
         url: /docs/troubleshooting/networking/
+
+  - title: "Hardware"
+    url: /docs/hardware/
+    children:
+      - title: "MBot Classic"
+        url: /docs/hardware/classic/
+        children:
+          - title: "Assembly"
+            url: "/docs/hardware/classic/assembly/"
+            children:
+              - title: "Bottom Plate"
+                url: "/docs/hardware/classic/assembly/mbot-classic-bottom-plate/"
+              - title: "Middle Plate"
+                url: "/docs/hardware/classic/assembly/mbot-classic-middle-plate/"
+              - title: "Top Plate"
+                url: "/docs/hardware/classic/assembly/mbot-classic-top-plate/"
+              - title: "Wiring"
+                url: "/docs/hardware/classic/assembly/mbot-wiring/"
+          - title: "Building"
+            url: "/docs/hardware/classic/building/"
+      - title: "MBot Omni"
+        url: /docs/hardware/omni/
+        children:
+          - title: "Assembly"
+            url: "/docs/hardware/omni/assembly/"
+          - title: "Motor Cables"
+            url: "/docs/hardware/omni/omni-motor-cables/"
+          - title: "Building"
+            url: "/docs/hardware/omni/building/"
+      - title: "MBot Control Board"
+        url: /docs/hardware/mbot-control-board/
 
   # Placeholder sections, not shown until they have content:
   # - title: Concepts

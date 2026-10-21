@@ -251,3 +251,7 @@ ul.api li > ul.params li {
 ul.api li > ul.params li > * {
   margin-left: 0;
 }
+
+/* Footer: the theme always prints a "Follow:" label; this site has no social links. */
+.page__footer-follow { display: none; }
+.page__footer-help { font-size: 0.75em; margin: 0 0 0.5em; }

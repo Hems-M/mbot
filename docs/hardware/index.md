@@ -1,4 +1,5 @@
 ---
+breadcrumb: "Hardware"
 layout: single
 title: MBot Hardware
 
