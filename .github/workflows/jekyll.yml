@@ -1,64 +1,65 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll site to Pages
+# Builds the site on every push to main and publishes a ready-to-run copy
+# (mbot-site.zip) on this repository's Releases page, under "site-latest".
+# Nothing is deployed to GitHub Pages. To view the site, download the zip,
+# unzip it and run serve.sh (Mac/Linux) or serve.bat (Windows).
+name: Build site and publish download
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+  # Lets you run it by hand from the Actions tab.
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# contents: write is needed to create the release.
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# A newer push replaces a build that is still running.
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: "site-download"
+  cancel-in-progress: true
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@086ffb1a2090c870a3f881cc91ea83aa4243d408 # v1.195.0
         with:
-          ruby-version: '3.2' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
+          ruby-version: '3.2'
+          bundler-cache: true # runs 'bundle install' and caches the gems
+          cache-version: 0
+
       - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        # Outputs to ./_site. baseurl stays "" so every /docs/... link works
+        # when the folder is served from http://localhost:4000/.
+        run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
-      - name: Upload artifact
-        # Automatically uploads an artifact from the './_site' directory by default
-        uses: actions/upload-pages-artifact@v3
 
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Package the site
+        run: |
+          mkdir -p dist/mbot-site
+          cp -R _site/. dist/mbot-site/
+          cp local/serve.sh local/serve.bat local/HOW-TO-VIEW.txt dist/mbot-site/
+          chmod +x dist/mbot-site/serve.sh
+          cd dist && zip -qr mbot-site.zip mbot-site
+
+      - name: Keep the zip as a build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mbot-site
+          path: dist/mbot-site.zip
+
+      - name: Publish the zip on the Releases page
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete site-latest --yes --cleanup-tag || true
+          gh release create site-latest dist/mbot-site.zip \
+            --target "$GITHUB_SHA" \
+            --title "MBot site (offline copy)" \
+            --notes "Built from commit ${GITHUB_SHA::7}. Download mbot-site.zip, unzip it, then run serve.sh (Mac/Linux) or serve.bat (Windows). See HOW-TO-VIEW.txt inside the zip."

@@ -1,0 +1,21 @@
+MBot website: offline copy
+==========================
+
+You need Python 3 (already on most Macs and Linux machines;
+Windows: https://www.python.org/downloads/).
+
+Mac / Linux
+  1. Open Terminal in this folder.
+  2. Run:  bash serve.sh
+  3. Your browser opens http://localhost:4000/
+
+Windows
+  1. Double-click serve.bat
+  2. Your browser opens http://localhost:4000/
+
+Port 4000 already in use? Pass another one:  bash serve.sh 4001
+Stop the server with Ctrl+C (or close the window on Windows).
+
+Do not open index.html by double-clicking it. The pages use links
+that start with "/", which only work through the local server.
+Search needs the local server too.
