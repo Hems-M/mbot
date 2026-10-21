@@ -1,0 +1,6 @@
+# Extra settings for the downloadable offline copy (mbot-site.zip).
+# Used by .github/workflows/jekyll.yml:
+#   bundle exec jekyll build --config _config.yml,_config.offline.yml
+# An empty url makes every generated link relative, so redirects and
+# other links stay on http://localhost instead of jumping to the live site.
+url: ""
