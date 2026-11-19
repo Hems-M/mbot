@@ -1,0 +1,51 @@
+<aside class="sidebar" id="sidebar" aria-label="Documentation">
+  <nav class="side-nav">
+    <div class="side-mobile-links">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/courses/' | relative_url }}">UM Courses</a>
+    </div>
+    {%- for sec in site.data.nav %}
+    <div class="side-section">
+      {%- if sec.url %}
+      <a class="side-title{% if page.url == sec.url %} is-active{% endif %}" href="{{ sec.url | relative_url }}"{% if page.url == sec.url %} aria-current="page"{% endif %}>{{ sec.title }}</a>
+      {%- else %}
+      <span class="side-title">{{ sec.title }}</span>
+      {%- endif %}
+
+      {%- if sec.items %}
+        {%- assign show_items = true -%}
+        {%- if sec.url -%}
+          {%- unless page.url contains sec.url -%}{%- assign show_items = false -%}{%- endunless -%}
+        {%- endif -%}
+        {%- if show_items %}
+      <ul class="side-list">
+        {%- for it in sec.items %}
+        <li><a href="{{ it.url | relative_url }}"{% if page.url == it.url %} class="is-active" aria-current="page"{% endif %}>{{ it.title }}</a></li>
+        {%- endfor %}
+      </ul>
+        {%- endif %}
+      {%- endif %}
+
+      {%- if sec.groups %}
+      <ul class="side-list">
+        {%- for g in sec.groups %}
+        {%- assign in_group = false -%}
+        {%- if page.url == g.url -%}{%- assign in_group = true -%}{%- endif -%}
+        {%- for s in g.steps -%}{%- if s.url == page.url -%}{%- assign in_group = true -%}{%- endif -%}{%- endfor %}
+        <li class="side-group{% if in_group %} is-open{% endif %}">
+          <a href="{{ g.url | relative_url }}"{% if page.url == g.url %} class="is-active" aria-current="page"{% endif %}>{{ g.title }}</a>
+          {%- if in_group %}
+          <ol class="side-steps">
+            {%- for s in g.steps %}
+            <li><a href="{{ s.url | relative_url }}"{% if page.url == s.url %} class="is-active" aria-current="page"{% endif %}><span class="side-num">{{ forloop.index }}</span>{{ s.title }}</a></li>
+            {%- endfor %}
+          </ol>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </div>
+    {%- endfor %}
+  </nav>
+</aside>

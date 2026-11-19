@@ -1,0 +1,15 @@
+{%- comment -%} Progress bar at the top of a step page. Needs find-group.html first. {%- endcomment -%}
+{%- if cur_group and cur_index > 0 -%}
+{%- assign total = cur_group.steps | size -%}
+<div class="stepbar" aria-label="Progress">
+  <div class="stepbar-text">
+    <a href="{{ cur_group.url | relative_url }}">{{ cur_section.title }} · {{ cur_group.title }}</a>
+    <span>Step {{ cur_index }} of {{ total }}</span>
+  </div>
+  <ol class="stepbar-track">
+    {%- for s in cur_group.steps %}
+    <li class="{% if forloop.index < cur_index %}done{% elsif forloop.index == cur_index %}now{% endif %}"><a href="{{ s.url | relative_url }}" title="Step {{ forloop.index }}: {{ s.title }}"><span class="sr-only">Step {{ forloop.index }}: {{ s.title }}</span></a></li>
+    {%- endfor %}
+  </ol>
+</div>
+{%- endif -%}

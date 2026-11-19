@@ -1,0 +1,18 @@
+{%- comment -%}
+Image row. Click an image to see it large. Output is one line, so it is safe inside list items.
+  dir:      folder, ending with /
+  files:    comma separated file names (or full https:// links)
+  captions: optional, "|" separated, same order as files
+  alt:      text used when there is no caption
+  size:     sm (default, small square thumbnails), md, or one (a single large image)
+{%- endcomment -%}
+{%- assign files = include.files | split: "," -%}
+{%- assign caps = include.captions | split: "|" -%}
+<div class="gallery gallery-{{ include.size | default: 'sm' }}">
+{%- for f in files -%}
+{%- assign fname = f | strip -%}
+{%- if fname contains "://" -%}{%- assign src = fname -%}{%- else -%}{%- assign src = include.dir | append: fname | relative_url -%}{%- endif -%}
+{%- assign cap = caps[forloop.index0] | strip -%}
+<figure><a href="{{ src }}" class="zoom" data-zoom><img src="{{ src }}" alt="{{ cap | default: include.alt | escape }}" loading="lazy"></a>{%- if cap and cap != "" -%}<figcaption>{{ cap }}</figcaption>{%- endif -%}</figure>
+{%- endfor -%}
+</div>

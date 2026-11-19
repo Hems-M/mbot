@@ -1,0 +1,30 @@
+{%- assign u = page.url -%}
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+      {% include icon.html name="menu" %}
+    </button>
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="MBot home">
+      <span class="brand-mark" aria-hidden="true">M</span>
+      <span class="brand-text">MBot</span>
+    </a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="{{ '/docs/' | relative_url }}"{% if u == '/docs/' or u contains '/docs/basics' %} aria-current="page"{% endif %}>Documentation</a>
+      <a href="{{ '/docs/classic/' | relative_url }}"{% if u contains '/docs/classic/' %} aria-current="page"{% endif %}>Classic</a>
+      <a href="{{ '/docs/omni/' | relative_url }}"{% if u contains '/docs/omni/' %} aria-current="page"{% endif %}>Omni</a>
+      <a href="{{ '/docs/guides/' | relative_url }}"{% if u contains '/docs/guides/' %} aria-current="page"{% endif %}>Guides</a>
+      <a href="{{ '/docs/help/' | relative_url }}"{% if u contains '/docs/help/' %} aria-current="page"{% endif %}>Help</a>
+      <a href="{{ '/courses/' | relative_url }}"{% if u contains '/courses/' %} aria-current="page"{% endif %}>UM Courses</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-btn" type="button" data-search-open aria-label="Search the site">
+        {% include icon.html name="search" %}<span class="search-btn-text">Search</span><kbd>/</kbd>
+      </button>
+      <button class="icon-btn theme-btn" type="button" data-theme-toggle aria-label="Switch between light and dark theme">
+        <span class="when-light">{% include icon.html name="moon" %}</span>
+        <span class="when-dark">{% include icon.html name="sun" %}</span>
+      </button>
+    </div>
+  </div>
+</header>

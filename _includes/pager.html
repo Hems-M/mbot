@@ -1,0 +1,46 @@
+{%- comment -%}
+Previous / next buttons. Uses the step group from find-group.html.
+A page can also set prev_url/prev_title and next_url/next_title in its front matter.
+{%- endcomment -%}
+{%- assign p_url = page.prev_url -%}{%- assign p_title = page.prev_title -%}{%- assign p_label = "Back" -%}
+{%- assign n_url = page.next_url -%}{%- assign n_title = page.next_title -%}{%- assign n_label = "Next" -%}
+{%- if cur_group -%}
+  {%- assign total = cur_group.steps | size -%}
+  {%- if cur_index == 0 -%}
+    {%- unless n_url -%}
+      {%- assign n_url = cur_group.steps[0].url -%}{%- assign n_title = cur_group.steps[0].title -%}{%- assign n_label = "Start with step 1" -%}
+    {%- endunless -%}
+  {%- else -%}
+    {%- assign pi = cur_index | minus: 2 -%}
+    {%- unless p_url -%}
+      {%- if cur_index == 1 -%}
+        {%- assign p_url = cur_group.url -%}{%- assign p_title = "Overview" -%}
+      {%- else -%}
+        {%- assign p_url = cur_group.steps[pi].url -%}{%- assign p_title = cur_group.steps[pi].title -%}{%- assign p_num = cur_index | minus: 1 -%}{%- assign p_label = "Step " | append: p_num -%}
+      {%- endif -%}
+    {%- endunless -%}
+    {%- unless n_url -%}
+      {%- if cur_index < total -%}
+        {%- assign n_url = cur_group.steps[cur_index].url -%}{%- assign n_title = cur_group.steps[cur_index].title -%}{%- assign n_num = cur_index | plus: 1 -%}{%- assign n_label = "Step " | append: n_num -%}
+      {%- elsif cur_group.after -%}
+        {%- assign n_url = cur_group.after.url -%}{%- assign n_title = cur_group.after.title -%}{%- assign n_label = "All done. Up next" -%}
+      {%- endif -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if p_url or n_url -%}
+<nav class="pager" aria-label="Previous and next page">
+  {%- if p_url %}
+  <a class="pager-link pager-prev" href="{{ p_url | relative_url }}">
+    <span class="pager-label">{% include icon.html name="arrow-left" %} {{ p_label }}</span>
+    <span class="pager-title">{{ p_title }}</span>
+  </a>
+  {%- else %}<span></span>{%- endif %}
+  {%- if n_url %}
+  <a class="pager-link pager-next" href="{{ n_url | relative_url }}">
+    <span class="pager-label">{{ n_label }} {% include icon.html name="arrow-right" %}</span>
+    <span class="pager-title">{{ n_title }}</span>
+  </a>
+  {%- endif %}
+</nav>
+{%- endif -%}

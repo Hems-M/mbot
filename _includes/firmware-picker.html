@@ -1,0 +1,37 @@
+{%- comment -%}
+Firmware picker. Fills file names into any element on the page with
+data-fw-text="..." and links with data-fw-href="...".
+  robot: classic or omni to fix the robot type. Leave out to let the reader pick.
+{%- endcomment -%}
+{%- assign v = site.data.mbot.firmware_version -%}
+{%- assign uid = include.robot | default: "any" -%}
+<div class="fw-picker" data-fw-picker data-version="{{ v }}" data-root="{{ site.data.mbot.firmware_releases }}/download/{{ v }}/"{% if include.robot %} data-robot="{{ include.robot }}"{% endif %}>
+  <p class="fw-head">{% include icon.html name="chip" %} Firmware picker <span class="fw-ver">version {{ v }}</span></p>
+  {%- unless include.robot %}
+  <fieldset class="seg">
+    <legend>1. Robot type</legend>
+    <label><input type="radio" name="fw-type-{{ uid }}" value="classic"><span>Classic</span></label>
+    <label><input type="radio" name="fw-type-{{ uid }}" value="omni"><span>Omni</span></label>
+  </fieldset>
+  {%- endunless %}
+  <fieldset class="seg">
+    <legend>{% unless include.robot %}2. {% endunless %}Encoder resolution <a href="#which-encoder">How do I tell?</a></legend>
+    <label><input type="radio" name="fw-enc-{{ uid }}" value="48"><span>48</span></label>
+    <label><input type="radio" name="fw-enc-{{ uid }}" value="40"><span>40</span></label>
+    <label><input type="radio" name="fw-enc-{{ uid }}" value="20"><span>20</span></label>
+  </fieldset>
+  {%- unless include.robot == "classic" %}
+  <fieldset class="seg" data-omni-only>
+    <legend>{% unless include.robot %}3. {% endunless %}Omni wheel size <a href="#which-wheel">How do I tell?</a></legend>
+    <label><input type="radio" name="fw-wheel-{{ uid }}" value="96"><span>96 mm</span></label>
+    <label><input type="radio" name="fw-wheel-{{ uid }}" value="101"><span>101 mm</span></label>
+  </fieldset>
+  {%- endunless %}
+  <p class="fw-status" data-fw-status role="status">Choose the options above to get your files.</p>
+  <div class="fw-downloads">
+    <a class="btn btn-ghost is-disabled" data-fw-href="calib" aria-disabled="true">{% include icon.html name="download" %} Calibration</a>
+    <a class="btn btn-ghost is-disabled" data-fw-href="main" aria-disabled="true">{% include icon.html name="download" %} Firmware</a>
+    <a class="btn btn-ghost is-disabled" data-fw-href="motor" aria-disabled="true">{% include icon.html name="download" %} Motor test</a>
+    <a class="btn btn-ghost" data-fw-href="encoder" href="{{ site.data.mbot.firmware_releases }}/download/{{ v }}/mbot_encoder_test.uf2">{% include icon.html name="download" %} Encoder test</a>
+  </div>
+</div>

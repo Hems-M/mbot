@@ -1,38 +1,81 @@
-# MBot Website Files
+# MBot website (simplified)
 
-Source for [https://mbot.robotics.umich.edu/](https://mbot.robotics.umich.edu/).
+Source for the MBot documentation site: step by step guides to build, set up and program the MBot Classic and MBot Omni.
 
-## View the site on your computer (no install except Python 3)
+It is a plain [Jekyll](https://jekyllrb.com/) site that builds with the `github-pages` gem (Jekyll 3.10). There is no remote theme: all layouts, styles and scripts are in this repository.
 
-1. Open this repository's **Releases** page. Each branch has its own release:
-   - `main`: "MBot site (offline copy)", file **mbot-site-main.zip**
-   - `redesign/<name>`: "MBot site, redesign/<name> branch (offline copy)", file **mbot-site-redesign-<name>.zip**
-2. Unzip it. The folder has the same name as the zip, and `VERSION.txt` inside says which branch and commit it is.
-3. Start the local server:
-   - **Mac / Linux:** open Terminal in that folder and run `bash serve.sh`
-   - **Windows:** double-click `serve.bat`
-4. The browser opens the site. The terminal prints the address and the version. Stop it with Ctrl+C.
+## Site map
 
-Viewing several versions? Each copy picks its own free port (4000, 4001, ...) and tells the browser not to cache, so copies never get mixed up.
+```
+Home (index.html)
+├── Documentation (docs/index.md)
+│   ├── Robot basics (docs/basics.md)
+│   ├── MBot Classic (docs/classic/)
+│   │   ├── Hardware  (docs/classic/hardware/)  5 steps
+│   │   └── Software  (docs/classic/software/)  7 steps, server setup (no desktop)
+│   ├── MBot Omni (docs/omni/)
+│   │   ├── Hardware  (docs/omni/hardware/)     6 steps
+│   │   └── Software  (docs/omni/software/)     7 steps, desktop setup with NoMachine
+│   ├── Guides (docs/guides/)
+│   └── Help (docs/help/)
+└── UM Courses (courses.md)
+```
 
-The zips are rebuilt automatically every time a branch changes (see `.github/workflows/jekyll.yml`).
+Old page addresses (for example `/docs/setup/01-install-os/`) redirect to the new pages through `redirect_from` in each page's front matter.
 
-Do not open `index.html` directly from the folder: links start with `/` and only work through the local server.
+## Where to change things
 
-## Edit and preview from source
+| To change | Edit |
+|---|---|
+| Sidebar, step order, prev / next buttons | `_data/nav.yml` |
+| Firmware version, image links, login, hotspot details | `_data/mbot.yml` |
+| "What is on the robot" tables, services, setup comparison | `_data/features.yml` |
+| Steps shared by Classic and Omni (flashing, config file, VS Code, calibration, test drive) | `_includes/steps/` |
+| Colors and layout (light and dark theme) | `assets/css/site.css` |
+| Theme switch, search, copy buttons, image viewer, firmware picker | `assets/js/site.js` |
+| Page templates | `_layouts/` |
 
-You need Ruby 3.2 (on a Mac: `brew install ruby`) or Docker.
+The MBot Classic server image link is empty in `_data/mbot.yml` (`images.classic_server`). While it is empty, the "Flash the SD card" page tells students to ask course staff. Add the link there when the image is released.
 
-**With Ruby:**
+## Writing a page
+
+Pages are Markdown with front matter:
+
+```yaml
+---
+title: Join Wi-Fi
+summary: "One line shown under the title."
+needs: [Your uniqname and UM password]   # optional chips under the title
+redirect_from:                           # optional old addresses
+  - /docs/old/page/
+---
+```
+
+Helpers you can use in a page:
+
+| Write | Result |
+|---|---|
+| `> text` then `{: .tip}` on the next line | Maize tip box. Also `.warn`, `.danger`, or no class for a blue note. |
+| An ordered list followed by `{: .steps}` | Numbered step circles |
+| A list followed by `{: .checklist}` | Check marks |
+| A table followed by `{: .parts}` | Parts table (count column centered) |
+| `{% include gallery.html dir="/assets/images/x/" files="a.jpg,b.jpg" captions="A|B" %}` | Image row. Click to enlarge. `size="md"` or `size="one"` for bigger images. |
+| `{% include firmware-picker.html robot="classic" %}` | Firmware picker |
+| `{% include features-table.html robot="classic" %}` | "What is on the robot" table |
+
+To add a page to the sidebar or a step group, add it to `_data/nav.yml`.
+
+## Run it on your computer
+
+Needs Ruby 3.x and Bundler.
+
 ```bash
 bundle install
 bundle exec jekyll serve
 ```
 
-**With Docker (nothing else to install):**
-```bash
-docker run --rm -it -p 4000:4000 -v "$PWD":/site -w /site ruby:3.2 \
-  bash -c "bundle install && bundle exec jekyll serve --host 0.0.0.0"
-```
+Then open <http://localhost:4000>.
 
-Then open http://localhost:4000/. Pages reload when you save a file.
+## Publish
+
+`.github/workflows/jekyll.yml` builds the site and deploys it to GitHub Pages on every push to `main`. `CNAME` sets the domain.

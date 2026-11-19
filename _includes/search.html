@@ -1,0 +1,12 @@
+<div class="search-modal" data-search-modal hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-box" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-input-row">
+      {% include icon.html name="search" %}
+      <input type="search" class="search-input" placeholder="Search the docs, for example: hotspot, calibrate, IP" autocomplete="off" spellcheck="false" aria-label="Search the docs" data-search-input>
+      <button class="icon-btn" type="button" data-search-close aria-label="Close search">{% include icon.html name="close" %}</button>
+    </div>
+    <ul class="search-results" data-search-results></ul>
+    <p class="search-hint" data-search-hint>Type at least 2 letters. Press Esc to close.</p>
+  </div>
+</div>

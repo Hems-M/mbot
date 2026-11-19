@@ -1,0 +1,173 @@
+# "What is on the robot" tables.
+# robots: which setup has the tool.  classic = Classic server setup (no desktop),
+#         omni = Omni desktop setup.
+# how: a short command or place. Shown as code.
+
+groups:
+  - title: Set up and network
+    items:
+      - name: Config file
+        how: mbot_config.txt
+        what: A text file on the SD card. It holds the robot name, home Wi-Fi name and password, hotspot password and IP registry details.
+        when: Before the first start. Also when you rename the robot or change home Wi-Fi.
+        robots: [classic, omni]
+      - name: Robot hotspot
+        how: "<robot-name>-AP"
+        what: The robot makes its own Wi-Fi network when it cannot join any other network. Your laptop joins it and talks to the robot directly.
+        when: First setup, when there is no Wi-Fi, or when Wi-Fi stops working.
+        robots: [classic, omni]
+      - name: MWireless setup tool
+        how: sudo mwireless-setup
+        what: Joins the robot to MWireless from the terminal. It asks for your uniqname and password once and saves them on the robot.
+        when: Once, on the UM campus. Again only if your password changes. Use its status option to check it.
+        robots: [classic]
+      - name: SecureW2 JoinNow
+        how: sh SecureW2_JoinNow.run
+        what: The UM setup script that joins MWireless. It needs the robot desktop, so you run it inside NoMachine.
+        when: Once, on the UM campus (Omni desktop setup).
+        robots: [omni]
+      - name: OLED screen
+        how: Screen on the robot
+        plain: true
+        what: Shows the robot name and its IP address.
+        when: Every time you need the IP address.
+        robots: [classic, omni]
+      - name: IP registry
+        how: data/<robot-name>.json
+        what: The robot posts its IP address to a GitHub repository your course sets up.
+        when: Robots with no screen, or a whole class fleet.
+        robots: [classic, omni]
+
+  - title: Connect and work
+    items:
+      - name: SSH
+        how: ssh mbot@<robot-ip>
+        what: Opens a terminal on the robot from your laptop.
+        when: Any time you want to type commands on the robot.
+        robots: [classic, omni]
+      - name: VS Code Remote-SSH
+        how: VS Code extension
+        plain: true
+        what: Opens the robot's files and a terminal inside VS Code on your laptop.
+        when: Your main way to write and run code on the robot.
+        robots: [classic, omni]
+      - name: NoMachine
+        how: NoMachine app
+        plain: true
+        what: Shows the robot desktop on your laptop.
+        when: Only for tools that need a window. The Classic server setup has no desktop, so it does not use NoMachine.
+        robots: [omni]
+
+  - title: Firmware (control board)
+    items:
+      - name: Firmware uploader
+        how: sudo mbot-upload-firmware flash <file>.uf2
+        what: Copies a firmware file to the Pico on the control board.
+        when: Calibrating, installing firmware, or running a motor or encoder test.
+        robots: [classic, omni]
+      - name: Calibration file
+        how: mbot_calibrate_<type>.uf2
+        what: Spins the wheels to learn your motors and saves the results on the Pico.
+        when: Once for a new robot, and after you change a motor, wheel or control board.
+        robots: [classic, omni]
+      - name: MBot firmware
+        how: mbot_<type>.uf2
+        what: The program that runs on the Pico every day. It drives the motors and reads the sensors.
+        when: Right after calibration, and when a new firmware version is released.
+        robots: [classic, omni]
+      - name: Motor and encoder tests
+        how: mbot_*_test.uf2
+        what: Small test programs that spin each motor or print encoder counts.
+        when: When a wheel does not turn or the robot drives crooked.
+        robots: [classic, omni]
+
+  - title: Drive and program
+    items:
+      - name: MBot web app
+        how: http://<robot-ip>
+        what: A web page served by the robot. Drive with the keyboard, make maps and see the lidar.
+        when: To test a new robot and for mapping.
+        robots: [classic, omni]
+      - name: MBot Bridge API
+        how: "from mbot_bridge.api import MBot"
+        what: Simple C++ and Python functions to drive the robot and read lidar, odometry and SLAM pose.
+        when: When you write your own robot programs.
+        robots: [classic, omni]
+      - name: Mapping (SLAM)
+        how: mbot-slam.service
+        what: Builds a map of the room from the lidar and finds where the robot is on it.
+        when: Mapping and localization labs.
+        robots: [classic, omni]
+
+  - title: Check and debug
+    items:
+      - name: Service tool
+        how: mbot service status
+        what: Lists, starts, stops and shows logs for the MBot background programs.
+        when: When something on the robot does not respond.
+        robots: [classic, omni]
+      - name: LCM spy (terminal)
+        how: mbot lcm-spy
+        what: Prints the live data channels (odometry, lidar, IMU) in the terminal.
+        when: To check that data is flowing, without a desktop.
+        robots: [classic, omni]
+      - name: LCM monitor (web)
+        how: http://<robot-ip>/spy
+        what: The same live channels, shown in your browser.
+        when: Same as LCM spy, if your image has it installed.
+        robots: [classic, omni]
+      - name: LCM spy (window)
+        how: lcm-spy
+        what: The desktop version of LCM spy.
+        when: Only inside NoMachine. On the Classic server setup use the terminal or web version.
+        robots: [omni]
+      - name: System logs
+        how: sudo journalctl -b
+        what: Shows everything the robot logged since it started.
+        when: Before you ask course staff for help. Save it to a file and send it.
+        robots: [classic, omni]
+
+# Background programs that start with the robot.
+services:
+  - name: mbot-start-network.service
+    what: Joins Wi-Fi, or starts the hotspot. Runs once at start.
+    check: Robot is not on Wi-Fi, or no hotspot appears.
+  - name: mbot-publish-info.service
+    what: Shows the IP on the screen and posts it to the IP registry. Runs once at start.
+    check: The screen or registry shows no IP.
+  - name: mbot-lcm-serial.service
+    what: Talks to the control board (Pico) over USB.
+    check: Wheels do not respond, or there is no odometry.
+  - name: mbot-rplidar-driver.service
+    what: Runs the lidar.
+    check: No lidar data, or mapping does not work.
+  - name: mbot-bridge.service
+    what: Runs the MBot Bridge server used by the API.
+    check: The API shows websocket errors.
+  - name: mbot-slam.service
+    what: Runs mapping and localization.
+    check: Mapping does not respond.
+  - name: mbot-motion-controller.service
+    what: Follows paths you send to the robot.
+    check: The robot does not follow a path correctly.
+
+# The two setups side by side.
+compare:
+  - label: Robot
+    classic: MBot Classic (Raspberry Pi 5)
+    omni: MBot Omni (Raspberry Pi 4)
+  - label: Desktop on the robot
+    classic: "No. You work from your laptop over SSH."
+    omni: "Yes. You can open it with NoMachine."
+  - label: Join MWireless
+    classic: sudo mwireless-setup in an SSH terminal
+    omni: SecureW2 JoinNow script inside NoMachine
+  - label: Monitor or keyboard needed
+    classic: "No"
+    omni: "No (NoMachine is used instead)"
+  - label: Main way to work
+    classic: VS Code Remote-SSH
+    omni: VS Code Remote-SSH, NoMachine when you need a window
+  - label: Battery use
+    classic: Lower, no desktop running
+    omni: Higher, desktop always running

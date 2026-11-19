@@ -1,0 +1,140 @@
+# Sidebar and step order.
+#
+# A "group" with steps makes the prev / next buttons and the
+# "Step X of Y" bar on every page listed in it.
+# To add a page: add it here, then create the .md file with the same url.
+
+- title: Start here
+  items:
+    - title: Documentation home
+      url: /docs/
+    - title: Robot basics
+      url: /docs/basics/
+
+- title: MBot Classic
+  url: /docs/classic/
+  robot: classic
+  groups:
+    - id: classic-hardware
+      title: Hardware
+      url: /docs/classic/hardware/
+      steps:
+        - title: Parts and design files
+          url: /docs/classic/hardware/parts/
+        - title: Bottom plate
+          url: /docs/classic/hardware/bottom-plate/
+        - title: Middle plate
+          url: /docs/classic/hardware/middle-plate/
+        - title: Top plate
+          url: /docs/classic/hardware/top-plate/
+        - title: Wiring
+          url: /docs/classic/hardware/wiring/
+      after:
+        title: Classic software setup
+        url: /docs/classic/software/
+    - id: classic-software
+      title: Software (server setup)
+      url: /docs/classic/software/
+      steps:
+        - title: Flash the SD card
+          url: /docs/classic/software/flash-sd-card/
+        - title: Edit the config file
+          url: /docs/classic/software/configure/
+        - title: Turn on and connect
+          url: /docs/classic/software/first-boot/
+        - title: Join Wi-Fi
+          url: /docs/classic/software/wifi/
+        - title: Connect with VS Code
+          url: /docs/classic/software/vscode/
+        - title: Calibrate and flash
+          url: /docs/classic/software/calibrate/
+        - title: Test drive
+          url: /docs/classic/software/drive/
+      after:
+        title: Guides for programming your robot
+        url: /docs/guides/
+
+- title: MBot Omni
+  url: /docs/omni/
+  robot: omni
+  groups:
+    - id: omni-hardware
+      title: Hardware
+      url: /docs/omni/hardware/
+      steps:
+        - title: Parts and design files
+          url: /docs/omni/hardware/parts/
+        - title: Motor cables
+          url: /docs/omni/hardware/motor-cables/
+        - title: Bottom plate
+          url: /docs/omni/hardware/bottom-plate/
+        - title: Middle plate
+          url: /docs/omni/hardware/middle-plate/
+        - title: Top plate
+          url: /docs/omni/hardware/top-plate/
+        - title: Final wiring
+          url: /docs/omni/hardware/wiring/
+      after:
+        title: Omni software setup
+        url: /docs/omni/software/
+    - id: omni-software
+      title: Software (desktop setup)
+      url: /docs/omni/software/
+      steps:
+        - title: Flash the SD card
+          url: /docs/omni/software/flash-sd-card/
+        - title: Edit the config file
+          url: /docs/omni/software/configure/
+        - title: Turn on and connect
+          url: /docs/omni/software/first-boot/
+        - title: Join Wi-Fi
+          url: /docs/omni/software/wifi/
+        - title: Connect with VS Code
+          url: /docs/omni/software/vscode/
+        - title: Calibrate and flash
+          url: /docs/omni/software/calibrate/
+        - title: Test drive
+          url: /docs/omni/software/drive/
+      after:
+        title: Guides for programming your robot
+        url: /docs/guides/
+
+- title: Guides
+  url: /docs/guides/
+  items:
+    - title: What is on the robot
+      url: /docs/guides/software-features/
+    - title: Find your robot's IP
+      url: /docs/guides/find-ip/
+    - title: Wi-Fi and hotspot
+      url: /docs/guides/wifi/
+    - title: Connect with VS Code
+      url: /docs/guides/vscode/
+    - title: Connect with NoMachine
+      url: /docs/guides/nomachine/
+    - title: Drive with the web app
+      url: /docs/guides/drive/
+    - title: Flash firmware
+      url: /docs/guides/firmware/
+    - title: MBot Bridge API
+      url: /docs/guides/bridge-api/
+    - title: Mapping and localization
+      url: /docs/guides/mapping/
+    - title: Command line tools
+      url: /docs/guides/cli-tools/
+    - title: The control board
+      url: /docs/guides/control-board/
+    - title: Build a new image (advanced)
+      url: /docs/guides/new-image/
+
+- title: Help
+  url: /docs/help/
+  items:
+    - title: Common problems
+      url: /docs/help/
+    - title: Hardware problems
+      url: /docs/help/hardware/
+    - title: Software problems
+      url: /docs/help/software/
+    - title: Network problems
+      url: /docs/help/network/

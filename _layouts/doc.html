@@ -1,0 +1,37 @@
+---
+layout: default
+body_class: has-sidebar
+---
+{%- include find-group.html -%}
+<div class="doc-shell">
+  {% include sidebar.html %}
+  <div class="sidebar-scrim" data-menu-close></div>
+  <main id="main" class="doc-main">
+    <article class="doc">
+      {% include stepbar.html %}
+      <header class="doc-header">
+        {%- if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>
+        {%- elsif cur_group and cur_index > 0 %}<p class="eyebrow">Step {{ cur_index }}</p>
+        {%- elsif cur_section %}<p class="eyebrow">{{ cur_section.title }}</p>{% endif %}
+        <h1>{{ page.title }}</h1>
+        {%- if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+        {%- if page.time or page.needs %}
+        <div class="meta-row">
+          {%- if page.time %}<span class="meta-chip">About {{ page.time }}</span>{% endif %}
+          {%- for n in page.needs %}<span class="meta-chip">{{ n }}</span>{% endfor %}
+        </div>
+        {%- endif %}
+      </header>
+      <div class="doc-body" data-doc-body>
+        {{ content }}
+      </div>
+      {% include pager.html %}
+    </article>
+    {%- unless page.toc == false %}
+    <aside class="toc" aria-label="On this page" data-toc hidden>
+      <p class="toc-title">On this page</p>
+      <ul data-toc-list></ul>
+    </aside>
+    {%- endunless %}
+  </main>
+</div>

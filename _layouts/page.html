@@ -1,0 +1,16 @@
+---
+layout: default
+body_class: plain-page
+---
+<main id="main" class="page-main">
+  <article class="doc page-doc">
+    <header class="doc-header">
+      {%- if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+      <h1>{{ page.title }}</h1>
+      {%- if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+    </header>
+    <div class="doc-body">
+      {{ content }}
+    </div>
+  </article>
+</main>

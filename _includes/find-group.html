@@ -1,0 +1,20 @@
+{%- comment -%}
+Finds the step group this page belongs to (from _data/nav.yml).
+Sets: cur_group, cur_index (0 = group overview, 1..n = step), cur_section.
+{%- endcomment -%}
+{%- assign cur_group = nil -%}
+{%- assign cur_index = nil -%}
+{%- assign cur_section = nil -%}
+{%- for sec in site.data.nav -%}
+  {%- if sec.url and page.url contains sec.url -%}{%- assign cur_section = sec -%}{%- endif -%}
+  {%- for g in sec.groups -%}
+    {%- if g.url == page.url -%}
+      {%- assign cur_group = g -%}{%- assign cur_index = 0 -%}{%- assign cur_section = sec -%}
+    {%- endif -%}
+    {%- for s in g.steps -%}
+      {%- if s.url == page.url -%}
+        {%- assign cur_group = g -%}{%- assign cur_index = forloop.index -%}{%- assign cur_section = sec -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endfor -%}

@@ -1,0 +1,15 @@
+<h3 id="which-encoder">Which encoder do I have?</h3>
+<p>Look at the back of a motor and match it to a picture.</p>
+<div class="gallery gallery-sm">
+  <figure><a href="{{ '/assets/images/setup/encoder-48.jpg' | relative_url }}" class="zoom" data-zoom><img src="{{ '/assets/images/setup/encoder-48.jpg' | relative_url }}" alt="Encoder with resolution 48" loading="lazy"></a><figcaption><strong>48</strong>: a small sensor sticks straight up from the board</figcaption></figure>
+  <figure><a href="{{ '/assets/images/setup/encoder-40.jpg' | relative_url }}" class="zoom" data-zoom><img src="{{ '/assets/images/setup/encoder-40.jpg' | relative_url }}" alt="Encoder with resolution 40" loading="lazy"></a><figcaption><strong>40</strong>: blue board</figcaption></figure>
+  <figure><a href="{{ '/assets/images/setup/encoder-20.jpg' | relative_url }}" class="zoom" data-zoom><img src="{{ '/assets/images/setup/encoder-20.jpg' | relative_url }}" alt="Encoder with resolution 20" loading="lazy"></a><figcaption><strong>20</strong>: green board</figcaption></figure>
+</div>
+{%- unless include.robot == "classic" %}
+<h3 id="which-wheel">Which Omni wheel do I have?</h3>
+<p>The two wheel sizes have different hole patterns (marked in blue). Match yours to a picture. You do not need to measure.</p>
+<div class="gallery gallery-md">
+  <figure><a href="{{ '/assets/images/setup/omni-wheel-96.jpg' | relative_url }}" class="zoom" data-zoom><img src="{{ '/assets/images/setup/omni-wheel-96.jpg' | relative_url }}" alt="Omni wheel, 96 mm" loading="lazy"></a><figcaption><strong>96 mm</strong> wheel</figcaption></figure>
+  <figure><a href="{{ '/assets/images/setup/omni-wheel-101.jpg' | relative_url }}" class="zoom" data-zoom><img src="{{ '/assets/images/setup/omni-wheel-101.jpg' | relative_url }}" alt="Omni wheel, 101 mm" loading="lazy"></a><figcaption><strong>101 mm</strong> wheel</figcaption></figure>
+</div>
+{%- endunless %}

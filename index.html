@@ -1,44 +1,106 @@
 ---
-title: "The MBot Ecosystem"
-layout: splash
-header:
-  overlay_color: "#000"
-  overlay_filter: "0.5"
-  overlay_image: /assets/images/mbot_family.jpg
-  actions:
-    - label: "Learn More"
-      url: "/about"
-excerpt: "A low-cost, adaptable ecosystem for teaching robotics with real robots."
-intro:
-  - excerpt: 'The MBot family of educational robot platforms are designed at the University of Michigan. Since the MBot was invented in 2014, hundreds of MBots have been used to teach 8 courses across undergraduate and graduate levels.'
-feature_row:
-  - image_path: assets/images/mbot_aug23_photoshoot.jpg
-    alt: "placeholder image 1"
-    title: "Placeholder 1"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-  - image_path: /assets/images/mbot_aug23_photoshoot.jpg
-    image_caption: "Image courtesy of [Unsplash](https://unsplash.com/)"
-    alt: "placeholder image 2"
-    title: "Placeholder 2"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-    url: "#test-link"
-    btn_label: "Read More"
-    btn_class: "btn--primary"
-  - image_path: /assets/images/mbot_aug23_photoshoot.jpg
-    title: "Placeholder 3"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-feature_row2:
-  - image_path: /assets/images/teaching_omni.jpg
-    alt: "Teaching with the MBot"
-    title: "Teaching with the MBot"
-    excerpt: 'The MBot is designed to be adaptable to the needs of your students and your university. Learn more about how others are using the MBot for hands-on robotics education.'
-    url: "/docs"
-    btn_label: "Learn More"
-    btn_class: "btn--primary"
+layout: home
+title: Home
+description: "Step by step guides to build, set up and program the MBot Classic and MBot Omni."
 ---
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Build, set up and program your <span>MBot</span></h1>
+      <p>Simple, step by step guides for the MBot Classic and the MBot Omni, the teaching robots made at the University of Michigan.</p>
+      <div class="btn-row">
+        <a class="btn btn-maize" href="{{ '/docs/' | relative_url }}">Open the documentation {% include icon.html name="arrow-right" %}</a>
+        <a class="btn btn-ghost" href="{{ '/courses/' | relative_url }}">{% include icon.html name="school" %} UM Courses</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="{{ '/assets/images/mbot_family.jpg' | relative_url }}" alt="A group of MBot robots">
+    </div>
+  </div>
+</section>
 
-{% include feature_row id="intro" type="center" %}
+<section class="home-section">
+  <h2>Pick your robot</h2>
+  <p>Each robot has two parts: <strong>Hardware</strong> (build it) and <strong>Software</strong> (set it up). Not sure which robot you have? The Classic has two wheels. The Omni has three.</p>
+  <div class="robot-cards">
+    <div class="robot-card">
+      <img src="{{ '/assets/images/mbot-no-bkg.png' | relative_url }}" alt="MBot Classic">
+      <div>
+        <h3>MBot Classic</h3>
+        <p>Two wheels, Raspberry Pi 5. Uses the server setup: no desktop, you work from your laptop over SSH.</p>
+        <div class="links">
+          <a class="btn btn-ghost" href="{{ '/docs/classic/hardware/' | relative_url }}">{% include icon.html name="tool" %} Hardware</a>
+          <a class="btn btn-blue" href="{{ '/docs/classic/software/' | relative_url }}">{% include icon.html name="terminal" %} Software</a>
+        </div>
+      </div>
+    </div>
+    <div class="robot-card">
+      <img src="{{ '/assets/images/mbot-omni-no-bkg.png' | relative_url }}" alt="MBot Omni">
+      <div>
+        <h3>MBot Omni</h3>
+        <p>Three omni wheels, Raspberry Pi 4. Uses the desktop setup with NoMachine.</p>
+        <div class="links">
+          <a class="btn btn-ghost" href="{{ '/docs/omni/hardware/' | relative_url }}">{% include icon.html name="tool" %} Hardware</a>
+          <a class="btn btn-blue" href="{{ '/docs/omni/software/' | relative_url }}">{% include icon.html name="monitor" %} Software</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- {% include feature_row %} -->
+<section class="home-section">
+  <h2>How it works</h2>
+  <p>Follow the steps in order. Each page tells you what you need and what you should see when it works.</p>
+  <ol class="flow">
+    <li><strong>Build</strong><span>Put the robot together, plate by plate.</span></li>
+    <li><strong>Set up</strong><span>Flash the SD card, start the robot and join Wi-Fi.</span></li>
+    <li><strong>Calibrate</strong><span>Teach the control board your motors and load the firmware.</span></li>
+    <li><strong>Drive and code</strong><span>Test drive in the browser, then write your own programs.</span></li>
+  </ol>
+</section>
 
-{% include feature_row id="feature_row2" type="left" %}
+<section class="home-section">
+  <h2>Quick links</h2>
+  <p>The pages people open most.</p>
+  <div class="cards">
+    <a class="card" href="{{ '/docs/guides/find-ip/' | relative_url }}">
+      <span class="card-icon">{% include icon.html name="wifi" %}</span>
+      <span class="card-title">Find your robot's IP</span>
+      <p class="card-text">Read it on the screen, the IP registry or the SD card.</p>
+    </a>
+    <a class="card" href="{{ '/docs/guides/wifi/' | relative_url }}">
+      <span class="card-icon">{% include icon.html name="wifi" %}</span>
+      <span class="card-title">Wi-Fi and hotspot</span>
+      <p class="card-text">Join MWireless or home Wi-Fi, or use the robot's own hotspot.</p>
+    </a>
+    <a class="card" href="{{ '/docs/guides/software-features/' | relative_url }}">
+      <span class="card-icon">{% include icon.html name="list" %}</span>
+      <span class="card-title">What is on the robot</span>
+      <p class="card-text">Every tool on the robot, what it does and when to use it.</p>
+    </a>
+    <a class="card" href="{{ '/docs/help/' | relative_url }}">
+      <span class="card-icon">{% include icon.html name="help" %}</span>
+      <span class="card-title">Something not working?</span>
+      <p class="card-text">Fixes for the most common problems.</p>
+    </a>
+  </div>
+</section>
+
+<section class="home-section">
+  <h2>Need more?</h2>
+  <p>Course pages and people who can help.</p>
+  <div class="cards cards-2">
+    <a class="card" href="{{ '/courses/' | relative_url }}">
+      <span class="card-icon">{% include icon.html name="school" %}</span>
+      <span class="card-title">Taking a UM course?</span>
+      <p class="card-text">ROB 550 and ROB 330 have their own course websites. Start there for course setup and labs.</p>
+      <span class="card-go">UM Courses {% include icon.html name="arrow-right" %}</span>
+    </a>
+    <a class="card" href="mailto:{{ site.help_email }}">
+      <span class="card-icon">{% include icon.html name="help" %}</span>
+      <span class="card-title">Need help?</span>
+      <p class="card-text">Email {{ site.help_email }} with your robot name and what you tried.</p>
+      <span class="card-go">Send an email {% include icon.html name="arrow-right" %}</span>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+---
+{%- assign first = true -%}
+[
+{%- for p in site.pages -%}
+  {%- if p.title == nil or p.search == false or p.url contains ".json" or p.url contains "404" -%}{%- continue -%}{%- endif -%}
+  {%- assign sec = "" -%}
+  {%- if p.url contains "/docs/classic/hardware" -%}{%- assign sec = "MBot Classic · Hardware" -%}
+  {%- elsif p.url contains "/docs/classic/software" -%}{%- assign sec = "MBot Classic · Software" -%}
+  {%- elsif p.url contains "/docs/classic" -%}{%- assign sec = "MBot Classic" -%}
+  {%- elsif p.url contains "/docs/omni/hardware" -%}{%- assign sec = "MBot Omni · Hardware" -%}
+  {%- elsif p.url contains "/docs/omni/software" -%}{%- assign sec = "MBot Omni · Software" -%}
+  {%- elsif p.url contains "/docs/omni" -%}{%- assign sec = "MBot Omni" -%}
+  {%- elsif p.url contains "/docs/guides" -%}{%- assign sec = "Guides" -%}
+  {%- elsif p.url contains "/docs/help" -%}{%- assign sec = "Help" -%}
+  {%- elsif p.url contains "/courses" -%}{%- assign sec = "UM Courses" -%}
+  {%- else -%}{%- assign sec = "Start here" -%}{%- endif -%}
+  {%- unless first -%},{%- endunless -%}{%- assign first = false %}
+  {"title": {{ p.title | jsonify }}, "url": {{ p.url | jsonify }}, "section": {{ sec | jsonify }}, "content": {{ p.content | strip_html | normalize_whitespace | truncate: 6000 | jsonify }}}
+{%- endfor %}
+]

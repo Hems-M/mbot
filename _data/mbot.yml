@@ -1,0 +1,32 @@
+# Values used on many pages. Change them here and every page updates.
+
+# Default robot login.
+user: mbot
+password: "i<3robots!"
+
+# Robot hotspot (access point). The robot starts it when it cannot join Wi-Fi.
+hotspot_password: iloverobots
+hotspot_ip: 192.168.3.1
+
+# Firmware release used by the firmware picker.
+firmware_version: v1.2.0
+firmware_releases: https://github.com/mbot-project/mbot_firmware/releases
+
+# SD card images.
+# classic_server: the MBot Classic server image (no desktop).
+#   Leave it empty until the image is released. The page then tells
+#   students to ask course staff for the link.
+images:
+  classic_server: ""
+  base: https://www.dropbox.com/scl/fi/t10624sp4g2np0kftc0sk/2026-01-15-mbot-base-bookworm.img.gz?rlkey=zs5rvn4uqqmd0z612ebq4bxkm&st=if9hp6xo&dl=0
+  full_classic: https://www.dropbox.com/scl/fi/neyf39e1vlq4ggqq2n4jk/2024-11-21-mbot-full-classic-bookworm.img.gz?rlkey=vggaa04owhq1rbywv16lkqab8&st=eugip8eg&dl=0
+  full_omni: https://www.dropbox.com/scl/fi/hq1yp1lm7g8i6rrb9dgzz/2024-11-21-mbot-full-omni-bookworm.img.gz?rlkey=k97jkc9qm23ffh83qh9bvvic1&st=eivjt3xq&dl=0
+  all_images: https://www.dropbox.com/scl/fo/h1ls98wl462unh4vtx4q4/AKDVHv1hSEn8bLaRHfXAomM?rlkey=iwiip4kzogas9r01am4cafj9p&st=l0jlbi6l&dl=0
+
+# Versions used by the "Build a new image" guide.
+versions:
+  lcm_base: v1.1.0
+  mbot_bridge: v1.1.0
+  web_app: v2.0.0
+  lcm_monitor: v1.1.0
+  mbot_autonomy: v1.1.0

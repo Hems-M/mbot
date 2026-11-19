@@ -1,34 +1,46 @@
 ---
-layout: single
-title: "MBot Basics"
-toc: true
-last_modified_at: 2024-08-21
+title: Robot basics
+summary: "The default login, how to turn the robot on and off, and how to look after the battery."
+redirect_from:
+  - /docs/basics
 ---
 
-The default robot username and password are:
+## Login
 
-&emsp;&emsp;**Username:** `mbot` <br/>
-&emsp;&emsp;**Password:** `i<3robots!`
+| | Default |
+|---|---|
+| Username | `{{ site.data.mbot.user }}` |
+| Password | `{{ site.data.mbot.password }}` |
+| Hotspot Wi-Fi password | `{{ site.data.mbot.hotspot_password }}` |
 
-**Students:** Check with course staff to confirm the login information for your robot.
-{: .notice--info}
+> **Students:** your course may use a different password. Check with course staff.
+{: .tip}
 
-## Robot Care
+## Turn the robot on
 
-### Turning the robot on
+1. Check the cables are plugged in (see the wiring step for your robot).
+2. Switch the power bank to **ON**.
+3. The red light on the Raspberry Pi turns on. Wait 1 to 2 minutes for the robot to start.
+{: .steps}
 
-To turn the robot on, flick the switch on the power bank to ON. The red light on the Raspberry Pi should turn on.
+## Turn the robot off
 
-### Turning the robot off
+Always shut down the Raspberry Pi first. Pulling the power while it runs can damage the SD card.
 
-To turn the robot off, first type `sudo shutdown now` in the terminal of the robot. This will shut down the Raspberry Pi. Once the lidar stops spinning, flick the switch on the power bank to OFF.
+1. In a terminal on the robot, run:
+   ```bash
+   sudo shutdown now
+   ```
+2. Wait until the lidar stops spinning.
+3. Switch the power bank to **OFF**.
+{: .steps}
 
-### Robot battery care
+## Battery care
 
-- **Charging the batteries:** Plug the battery into the power supply and switch the battery to ON for charging. The power adapter will have a red light while charging, and it will turn green when done. Switch the battery to OFF for storage.
-- Always plug in uncharged batteries right away as they take a long time to charge.
-- When a battery has three out of five green lights on, it should be replaced.
+- **Charge:** plug the battery into its charger and switch the battery **ON**. The charger light is red while charging and green when full.
+- **Store:** switch the battery **OFF**.
+- **Charge right away:** empty batteries take a long time to charge, so plug them in as soon as you are done.
+- **Replace:** when a full battery shows only three of five green lights, it is time for a new one.
 
-**Tip:** When you aren't using the Lidar, unplug the Micro USB cord from its board to disconnect it from the Raspberry Pi. When it spins, it draws a lot of power and drains the battery quickly.
-{: .notice--info}
-
+> **Save battery:** when you do not need the lidar, unplug its micro USB cable. The spinning lidar uses a lot of power.
+{: .tip}
